@@ -1,21 +1,29 @@
 "use client";
 import { MdPhone, MdEmail } from "react-icons/md";
 import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
+import Image from "next/image";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full bg-white">
-      <div className="container mx-auto px-4">
+    <header className="fixed top-0 left-0 w-full bg-primary shadow-md">
+      <div className="max-w-[1536px] mx-auto bg-white">
         <div className="flex w-full">
-          <div className="w-full max-w-[20%]">
-            <h1 className="text-2xl font-bold">Fresh</h1>
+          <div className="w-full max-w-[30%] lg:max-w-[25%]">
+            <Image
+              src="/fresh-logo.jpg"
+              width={300}
+              height={100}
+              alt="Fresh"
+              className="w-full h-full"
+              priority
+            />
           </div>
 
-          <div className="flex flex-col w-full max-w-[80%]">
-            <div className="flex justify-between items-center ">
-              <div className="flex space-x-4">
+          <div className="flex flex-col w-full max-w-[70%] lg:max-w-[75%]">
+            <div className="flex justify-between items-center bg-blue-50 py-4 px-6">
+              <div className="flex flex-col lg:flex-row gap-4">
                 <div className="flex items-center space-x-2">
-                  <div className="text-blue-500 text-xl">
+                  <div className="text-primary text-xl">
                     <MdEmail />
                   </div>
 
@@ -27,7 +35,7 @@ export const Header = () => {
                   </a>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <div className="text-blue-500 text-xl">
+                  <div className="text-primary text-xl">
                     <MdPhone />
                   </div>
 
@@ -65,17 +73,22 @@ export const Header = () => {
               </div>
             </div>
 
-            <div>
+            <div className="flex flex-row justify-between px-6 py-6 items-center h-full w-full bg-primary">
               <nav>
-                <ul className="flex space-x-4">
+                <ul className="flex space-x-4 text-white">
                   <li>
-                    <a href="/">Home</a>
+                    <a href="/">Početna</a>
                   </li>
                   <li>
-                    <a href="/about">About</a>
+                    <a href="/o-nama">O nama</a>
                   </li>
                 </ul>
               </nav>
+              <div className="flex justify-end">
+                <button className="bg-white text-primary font-bold py-2 px-4 rounded-md">
+                  Contact
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -14,7 +14,10 @@ const config: Config = {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
         raleway: ["var(--font-raleway)"],
-        notoSerif: ["var(--font-noto-serif)"],
+      },
+      colors: {
+        primary: "#2c549d",
+        secondary: "#459cb2",
       },
     },
   },
