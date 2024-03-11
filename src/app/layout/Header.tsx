@@ -2,6 +2,7 @@
 import { MdPhone, MdEmail } from "react-icons/md";
 import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Header = () => {
   return (
@@ -75,18 +76,18 @@ export const Header = () => {
 
             <div className="flex flex-row justify-between px-6 py-6 items-center h-full w-full bg-primary">
               <nav>
-                <ul className="flex space-x-4 text-white">
-                  <li>
-                    <a href="/">Početna</a>
+                <ul className="flex space-x-4 text-white font-semibold">
+                  <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary rounded-lg">
+                    <Link href="/">Početna</Link>
                   </li>
-                  <li>
-                    <a href="/o-nama">O nama</a>
+                  <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary rounded-lg">
+                    <Link href="/o-nama">O nama</Link>
                   </li>
                 </ul>
               </nav>
               <div className="flex justify-end">
-                <button className="bg-white text-primary font-bold py-2 px-4 rounded-md">
-                  Contact
+                <button className="bg-blue-100 text-primary font-bold py-2 px-4 rounded-md">
+                  Kontakt
                 </button>
               </div>
             </div>
