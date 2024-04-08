@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway, Roboto } from "next/font/google";
 import "./globals.css";
 import { Header } from "./layout/Header";
+import { Footer } from "./layout/Footer";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -29,10 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${raleway.variable}`}>
-        <main className="flex flex-col min-h-screen container mx-auto relative">
+        <main className="flex flex-col min-h-screen relative bg-blue-50">
           <Header />
-          {children}
-          {/* <Footer /> */}
+          <main className="flex flex-col flex-1 justify-center items-center xl:container w-full mx-auto mt-[176px]">
+            {children}
+          </main>
+          <Footer />
         </main>
       </body>
     </html>

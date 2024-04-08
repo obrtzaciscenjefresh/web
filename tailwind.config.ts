@@ -20,6 +20,9 @@ const config: Config = {
         secondary: "#459cb2",
       },
     },
+    backgroundImage: {
+      hero: "url('/pakiranje.jpg')",
+    },
   },
   plugins: [],
 };

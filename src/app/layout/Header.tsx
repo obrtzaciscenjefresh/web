@@ -6,9 +6,9 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full bg-primary shadow-md">
+    <header className="fixed top-0 left-0 w-full bg-primary shadow-md z-10">
       <div className="max-w-[1536px] mx-auto bg-white">
-        <div className="flex w-full">
+        <div className="flex w-full h-[176px]">
           <div className="w-full max-w-[30%] lg:max-w-[25%]">
             <Image
               src="/fresh-logo.jpg"
