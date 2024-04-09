@@ -1,4 +1,10 @@
 import Image from "next/image";
+import {
+  FaPersonBooth,
+  FaPeopleCarry,
+  FaPagelines,
+  FaTools,
+} from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -27,9 +33,58 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="onama" className="flex flex-col sm:flex-row bg-white">
-        <div></div>
-        <div></div>
+      <section
+        id="onama"
+        className="flex flex-col sm:flex-row bg-white gap-10 py-40 px-20"
+      >
+        <Image
+          src="/susenje.jpg"
+          width={540}
+          height={700}
+          alt="Fresh"
+          className="w-full h-full flex-1 shadow-xl rounded-xl"
+          priority
+        />
+        <div className="flex-1 flex flex-col gap-6">
+          <h3 className="uppercase text-primary text-xl font-bold">
+            Saznajte više o nama
+          </h3>
+          <h1 className="uppercase text-3xl font-extrabold">O nama</h1>
+          <p className="">
+            Naša firma je specijalizirana za profesionalno i dubinsko pranje
+            tepiha, koristeći najnovije tehnike i ekološki prihvatljive
+            proizvode. Ponosimo se brzom i efikasnom uslugom, osiguravajući da
+            vaši tepisi budu čisti, svježi i suhi u najkraćem mogućem
+            roku.Pružamo besplatnu uslugu preuzimanja i dostave tepiha, čineći
+            cijeli proces pranja bezbrižnim i jednostavnim za naše klijente.
+          </p>
+          <div className="flex flex-col gap-6">
+            <div className="flex gap-3 items-center">
+              <FaPersonBooth className="text-3xl text-primary" />
+              <p className="uppercase text-base font-bold">
+                Posvećenost tepisima
+              </p>
+            </div>
+            <div className="flex gap-3 items-center">
+              <FaPeopleCarry className="text-3xl text-primary" />
+              <p className="uppercase text-base font-bold">
+                profesionalno osoblje
+              </p>
+            </div>
+            <div className="flex gap-3 items-center">
+              <FaTools className="text-3xl text-primary" />
+              <p className="uppercase text-base font-bold">
+                najmoderniji strojevi
+              </p>
+            </div>
+            <div className="flex gap-3 items-center">
+              <FaPagelines className="text-3xl text-primary" />
+              <p className="uppercase text-base font-bold">
+                ekološki proizvodi
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
