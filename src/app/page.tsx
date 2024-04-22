@@ -4,7 +4,15 @@ import {
   FaPeopleCarry,
   FaPagelines,
   FaTools,
+  FaDiceOne,
+  FaDiceFive,
+  FaDiceSix,
+  FaDiceFour,
+  FaDiceThree,
+  FaDiceTwo,
+  FaPlusCircle,
 } from "react-icons/fa";
+import { Proces } from "./components/Proces";
 
 export default function Home() {
   return (
@@ -86,6 +94,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="relative w-full bg-kombi bg-cover bg-center">
+        <div className="relative flex gap-2 py-14 px-8 items-center justify-between w-full h-full bg-primary/70">
+          <h1 className="text-white text-7xl font-bold uppercase">
+            Besplatna dostava
+          </h1>
+          <p className="text-white text-lg font-semibold">
+            Besplatna usluga preuzimanja i dostave tepiha
+          </p>
+        </div>
+      </section>
+
+      <Proces />
     </div>
   );
 }

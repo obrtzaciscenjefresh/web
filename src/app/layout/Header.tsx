@@ -21,7 +21,7 @@ export const Header = () => {
           </div>
 
           <div className="flex flex-col w-full max-w-[70%] lg:max-w-[75%]">
-            <div className="flex justify-between items-center bg-blue-50 py-4 px-6">
+            <div className="flex justify-between items-center bg-blue-50 py-3 px-6">
               <div className="flex flex-col lg:flex-row gap-4">
                 <div className="flex items-center space-x-2">
                   <div className="text-primary text-xl">
