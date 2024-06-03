@@ -100,8 +100,8 @@ export const Proces = () => {
 
   return (
     <section
-      id="onama"
-      className="flex flex-col sm:flex-row bg-white gap-10 py-20 px-20 w-full"
+      id="process"
+      className="flex flex-col lg:flex-row bg-white gap-10 py-12 sm:py-20 px-8 sm:px-20 w-full"
     >
       <div className="flex-1 flex flex-col gap-6">
         <h3 className="uppercase text-primary text-xl font-bold">
@@ -110,14 +110,16 @@ export const Proces = () => {
         <h1 className="uppercase text-3xl font-extrabold">proces</h1>
         <div className="flex flex-col space-y-3 divide-y">{procesPreview}</div>
       </div>
-      <Image
-        src="/susenje.jpg"
-        width={540}
-        height={700}
-        alt="Fresh"
-        className="w-full h-full flex-1 shadow-xl rounded-xl"
-        priority
-      />
+      <div className="flex-1  shadow-xl rounded-xl overflow-hidden">
+        <Image
+          src="/susenje.jpg"
+          width={540}
+          height={700}
+          alt="Fresh"
+          className="w-full h-full"
+          priority
+        />
+      </div>
     </section>
   );
 };
