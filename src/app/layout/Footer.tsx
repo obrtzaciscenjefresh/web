@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="w-full bg-primary shadow-md">
+    <footer className="w-full bg-primary shadow-md z-20">
       <div className="max-w-[1536px] mx-auto py-10 px-10 flex flex-col sm:flex-row gap-10">
         <div className="flex-1 flex flex-col gap-10">
           <div className="w-full max-w-[40%] rounded-md overflow-hidden">

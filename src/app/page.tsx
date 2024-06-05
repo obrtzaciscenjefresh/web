@@ -22,7 +22,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="absolute px-8 sm:px-12 bottom-0 transform translate-y-[50%] w-full">
+        <div className="absolute px-8 sm:px-12 bottom-0 transform translate-y-[50%] w-full z-10">
           <div className="flex flex-col items-center gap-4 rounded-xl p-4 text-white bg-primary">
             <h4 className="font-bold text-base sm:text-2xl">
               1.000+ zadovoljnih korisnika
@@ -36,10 +36,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section
-        id="onama"
-        className="flex flex-col-reverse lg:flex-row bg-white gap-10 pt-32 pb-0 sm:py-40 px-8 sm:px-20"
-      >
+      <section className="flex flex-col-reverse lg:flex-row bg-white gap-10 pt-32 pb-20 sm:py-40 px-8 sm:px-20 relative">
+        <span id="onama" className="absolute -top-[100px]"></span>
         <div className="flex-1  shadow-xl rounded-xl overflow-hidden">
           <Image
             src="/susenje.jpg"
@@ -91,16 +89,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/*     <section className="relative w-full bg-kombi bg-cover bg-center">
-        <div className="relative flex gap-2 py-14 px-8 items-center justify-between w-full h-full bg-primary/70">
-          <h1 className="text-white text-7xl font-bold uppercase">
+      <section className="relative w-full bg-kombi bg-cover bg-center">
+        <div className="relative flex flex-col sm:flex-row gap-2 py-14 px-8 items-center justify-between w-full h-full bg-primary/70">
+          <h1 className="text-white text-5xl sm:text-7xl font-bold uppercase">
             Besplatna dostava
           </h1>
           <p className="text-white text-lg font-semibold">
             Besplatna usluga preuzimanja i dostave tepiha
           </p>
         </div>
-      </section> */}
+      </section>
 
       <Proces />
     </div>

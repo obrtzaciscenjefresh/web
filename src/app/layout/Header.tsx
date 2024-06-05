@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full bg-primary shadow-md z-10">
+    <header className="fixed top-0 left-0 w-full bg-primary shadow-md z-20">
       <div className="max-w-[1536px] mx-auto bg-white">
         <div className="flex w-full h-[80px] sm:h-[176px]">
           <div className="w-full max-w-[30%] lg:max-w-[25%]">
@@ -81,7 +81,7 @@ export const Header = () => {
                     <Link href="/">Početna</Link>
                   </li>
                   <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary rounded-lg">
-                    <Link href="/o-nama">O nama</Link>
+                    <Link href="#onama">O nama</Link>
                   </li>
                 </ul>
               </nav>
