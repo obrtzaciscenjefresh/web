@@ -39,16 +39,16 @@ export const Footer = () => {
                   <Link href="/">Početna</Link>
                 </li>
                 <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary">
-                  <Link href="/o-nama">O nama</Link>
+                  <Link href="#onama">O nama</Link>
                 </li>
                 <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary">
-                  <Link href="/kontakt">Kontakt</Link>
+                  <Link href="#usluge">Usluge</Link>
                 </li>
               </ul>
             </nav>
           </div>
 
-          <div className="flex flex-col gap-4 ">
+          <div className="flex flex-col gap-4" id="kontakt">
             <h2 className="text-white text-3xl">Kontakt informacije</h2>
             <div className="flex items-center space-x-2">
               <div className="text-white text-xl">
@@ -92,6 +92,7 @@ export const Footer = () => {
             <a
               href="https://api.whatsapp.com/send?phone=385922416743"
               target="_blank"
+              aria-label="whatsapp"
               className="text-4xl text-[#25D366] hover:text-[#9cffba] hover:underline transition-colors"
             >
               <FaWhatsapp />
@@ -99,6 +100,7 @@ export const Footer = () => {
             <a
               href="https://www.instagram.com/fresh_obrt_za_ciscenje/"
               target="_blank"
+              aria-label="instagram"
               className="text-[28px] instagram rounded-md text-white p-[4px] hover:text-opacity-75"
             >
               <FaInstagram />
@@ -106,6 +108,7 @@ export const Footer = () => {
             <a
               href="https://www.facebook.com/profile.php?id=61554058824757"
               target="_blank"
+              aria-label="facebook"
               className="text-4xl text-white hover:text-opacity-75 hover:underline transition-colors"
             >
               <FaFacebook />

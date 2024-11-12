@@ -82,11 +82,17 @@ export const Proces = () => {
             <p className="uppercase text-base font-bold">{process.title}</p>
           </div>
           {activeProcess === process.id ? (
-            <button onClick={() => setActiveProcess(0)}>
+            <button
+              onClick={() => setActiveProcess(0)}
+              aria-label="close preview"
+            >
               <FaMinusCircle className="text-xl text-primary" />
             </button>
           ) : (
-            <button onClick={() => setActiveProcess(process.id)}>
+            <button
+              onClick={() => setActiveProcess(process.id)}
+              aria-label="open preview"
+            >
               <FaPlusCircle className="text-xl text-primary" />
             </button>
           )}
@@ -104,15 +110,15 @@ export const Proces = () => {
       className="flex flex-col lg:flex-row bg-white gap-10 py-12 sm:py-20 px-8 sm:px-20 w-full"
     >
       <div className="flex-1 flex flex-col gap-6">
-        <h3 className="uppercase text-primary text-xl font-bold">
+        <h1 className="uppercase text-primary text-xl font-bold">
           Kako mi to radimo
-        </h3>
-        <h1 className="uppercase text-3xl font-extrabold">proces</h1>
+        </h1>
+        <h2 className="uppercase text-3xl font-extrabold">proces</h2>
         <div className="flex flex-col space-y-3 divide-y">{procesPreview}</div>
       </div>
       <div className="flex-1  shadow-xl rounded-xl overflow-hidden">
         <Image
-          src="/susenje.jpg"
+          src="/centrifuga.jpg"
           width={540}
           height={700}
           alt="Fresh"

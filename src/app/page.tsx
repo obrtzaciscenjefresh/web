@@ -6,6 +6,7 @@ import {
   FaTools,
 } from "react-icons/fa";
 import { Proces } from "./components/Proces";
+import { Usluge } from "./components/Service";
 
 export default function Home() {
   return (
@@ -24,9 +25,9 @@ export default function Home() {
         </div>
         <div className="absolute px-8 sm:px-12 bottom-0 transform translate-y-[50%] w-full z-10">
           <div className="flex flex-col items-center gap-4 rounded-xl p-4 text-white bg-primary">
-            <h4 className="font-bold text-base sm:text-2xl">
+            <h1 className="font-bold text-base sm:text-2xl">
               1.000+ zadovoljnih korisnika
-            </h4>
+            </h1>
 
             <p className="font-semibold text-sm sm:text-lg">
               Ponosni smo na naših preko 1 000 zadovoljnih korisnika, koji su
@@ -49,10 +50,10 @@ export default function Home() {
           />
         </div>
         <div className="flex-1 flex flex-col gap-6">
-          <h3 className="uppercase text-primary text-xl font-bold">
+          <h1 className="uppercase text-primary text-xl font-bold">
             Saznajte više o nama
-          </h3>
-          <h1 className="uppercase text-3xl font-extrabold">O nama</h1>
+          </h1>
+          <h2 className="uppercase text-3xl font-extrabold">O nama</h2>
           <p className="">
             Naša firma je specijalizirana za profesionalno i dubinsko pranje
             tepiha, koristeći najnovije tehnike i ekološki prihvatljive
@@ -101,6 +102,7 @@ export default function Home() {
       </section>
 
       <Proces />
+      <Usluge />
     </div>
   );
 }

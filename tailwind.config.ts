@@ -22,7 +22,7 @@ const config: Config = {
     },
     backgroundImage: {
       hero: "url('/pakiranje.jpg')",
-      kombi: "url('/kombi.jpg')",
+      kombi: "url('/kombi-dostava.jpg')",
     },
   },
   plugins: [],
