@@ -136,7 +136,7 @@ export const Header = () => {
                 Početna
               </Link>
               <Link
-                href="#onama"
+                href="/#onama"
                 onClick={() => setMenuOpen(false)}
                 className="py-2"
               >
