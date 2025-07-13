@@ -34,14 +34,20 @@ export const Footer = () => {
         <div className="flex flex-col gap-10 flex-1">
           <div className="flex flex-col gap-4">
             <nav className="bg-white">
-              <ul className="flex space-x-4 text-primary font-semibold">
-                <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary">
+              <ul className="flex px-2 space-x-4 text-primary font-semibold">
+                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
                   <Link href="/">Početna</Link>
                 </li>
-                <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary">
-                  <Link href="#onama">O nama</Link>
+                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base break-keep">
+                  <Link href="#onama" className="whitespace-nowrap">O nama</Link>
                 </li>
-                <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary">
+                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
+                  <Link href="/kucni-tepis" className="whitespace-nowrap">Kucni tepisi</Link>
+                </li>
+                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
+                  <Link href="/uredski-tepis" className="whitespace-nowrap">Uredski tepisi</Link>
+                </li>
+                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
                   <Link href="#usluge">Usluge</Link>
                 </li>
               </ul>

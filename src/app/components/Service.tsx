@@ -24,20 +24,20 @@ const services: Service[] = [
   {
     id: 8,
     name: "Madrac",
-    price: { Jednostrano: "20 €", Obostrano: "30 €" },
+    price: { Jednostrano: "30 €", Obostrano: "40 €" },
     category: "Madraci",
   },
   {
     id: 9,
     name: "Bračni madrac",
-    price: { Jednostrano: "30 €", Obostrano: "45 €" },
+    price: { Jednostrano: "40 €", Obostrano: "55 €" },
     category: "Madraci",
   },
   { id: 10, name: "Autosjedala", price: "90 €", category: "Vozila" },
   { id: 11, name: "Auto", price: "od 130 €", category: "Vozila" },
   {
     id: 12,
-    name: "Poslovni tepisi",
+    name: "Uredski tepisi",
     price: "Cijena po dogovoru",
     category: "Tepisi",
   },

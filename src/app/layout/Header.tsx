@@ -88,11 +88,17 @@ export const Header = () => {
             <div className="flex flex-row justify-between px-6 py-6 items-center h-full w-full bg-primary">
               <nav>
                 <ul className="flex space-x-4 text-white font-semibold">
-                  <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary rounded-lg">
+                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
                     <Link href="/">Početna</Link>
                   </li>
-                  <li className="px-3 py-2 hover:bg-blue-100 hover:text-primary rounded-lg">
-                    <Link href="#onama">O nama</Link>
+                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
+                    <Link href="/#onama">O nama</Link>
+                  </li>
+                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
+                    <Link href="/kucni-tepisi">Kućni tepisi</Link>
+                  </li>
+                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
+                    <Link href="/uredski-tepisi">Uredski tepisi</Link>
                   </li>
                 </ul>
               </nav>
@@ -135,6 +141,20 @@ export const Header = () => {
                 className="py-2"
               >
                 O nama
+              </Link>
+              <Link
+                href="/kucni-tepisi"
+                onClick={() => setMenuOpen(false)}
+                className="py-2"
+              >
+                Kućni tepisi
+              </Link>
+              <Link
+                href="/uredski-tepisi"
+                onClick={() => setMenuOpen(false)}
+                className="py-2"
+              >
+                Uredski tepisi
               </Link>
               <Link
                 href="#kontakt"

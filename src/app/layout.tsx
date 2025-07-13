@@ -4,6 +4,7 @@ import { Raleway, Roboto } from "next/font/google";
 import "./globals.css";
 import { Header } from "./layout/Header";
 import { Footer } from "./layout/Footer";
+import Script from "next/script";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -52,6 +53,23 @@ export default function RootLayout({
         <meta property="og:locale" content="hr_HR" />
       </Head>
       <body className={`${roboto.variable} ${raleway.variable}`}>
+        {/* Google Analytics Script */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17350004003"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17350004003');
+            `,
+          }}
+        />
         <main className="flex flex-col min-h-screen relative bg-blue-50">
           <Header />
           <main className="flex flex-col flex-1 justify-center items-center xl:container w-full mx-auto mt-[80px] sm:mt-[176px]">

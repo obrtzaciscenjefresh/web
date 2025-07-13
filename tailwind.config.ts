@@ -23,6 +23,8 @@ const config: Config = {
     backgroundImage: {
       hero: "url('/pakiranje.jpg')",
       kombi: "url('/kombi-dostava.jpg')",
+      centrifuga: "url('/centrifuga.jpg')",
+      strojevi: "url('/strojevi.jpg')",
     },
   },
   plugins: [],
