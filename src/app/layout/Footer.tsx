@@ -32,7 +32,7 @@ export const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-10 flex-1">
-          <div className="flex flex-col gap-4">
+          <div className="flex-col gap-4 hidden xs:flex">
             <nav className="bg-white">
               <ul className="flex px-2 space-x-4 text-primary font-semibold">
                 <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
@@ -47,7 +47,7 @@ export const Footer = () => {
                 <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
                   <Link href="/uredski-tepis" className="whitespace-nowrap">Uredski tepisi</Link>
                 </li>
-                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
+                <li className="py-2 hover:bg-blue-100 hover:text-primary hidden sm:flex items-center text-xs md:text-base">
                   <Link href="#usluge">Usluge</Link>
                 </li>
               </ul>
