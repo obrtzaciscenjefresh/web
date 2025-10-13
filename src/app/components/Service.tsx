@@ -9,7 +9,7 @@ type Service = {
 };
 
 const services: Service[] = [
-  { id: 1, name: "Tepisi", price: "4 € po m²", category: "Tepisi" },
+  { id: 1, name: "Tepisi", price: "5 € po m²", category: "Tepisi" },
   {
     id: 2,
     name: "Kutna garnitura",
