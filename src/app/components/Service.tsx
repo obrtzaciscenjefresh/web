@@ -60,7 +60,7 @@ export const Usluge = () => {
     }
     return (
       <ul className="space-y-1">
-        {Object.entries(price).map(([option, cost], index) => (
+        {Object.entries(price).map(([option, cost]) => (
           <li key={option} className="flex justify-between text-gray-700">
             <span className="ml-4">{option}</span>
             <span className="text-base sm:text-lg font-semibold text-primary">
@@ -75,24 +75,28 @@ export const Usluge = () => {
   return (
     <section
       id="usluge"
-      className="bg-blue-100 py-12 sm:py-20 px-8 sm:px-20 w-full flex flex-col gap-10"
+      className="w-full bg-blue-100"
     >
-      <div className="flex-1 flex flex-col gap-6">
-        <h1 className="uppercase text-primary text-xl font-bold">
+      <div className="section-shell flex flex-col gap-8">
+        <div className="flex flex-col gap-3">
+        <p className="eyebrow">
           Naše usluge i cijene čišćenja
-        </h1>
-        <h2 className="uppercase text-3xl font-extrabold">usluge i cijene</h2>
-      </div>
+        </p>
+        <h2 className="font-raleway text-3xl font-extrabold text-slate-900 sm:text-4xl">Usluge i cijene</h2>
+        <p className="max-w-2xl leading-7 text-slate-600">Transparentan pregled najčešćih usluga. Za veće površine i posebne materijale cijenu potvrđujemo nakon kratkog dogovora.</p>
+        </div>
 
-      <div className="flex justify-start mb-6">
+      <div className="-mx-1 flex max-w-full gap-2 overflow-x-auto pb-2" role="tablist" aria-label="Kategorije usluga">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveTab(category)}
-            className={`px-2 py-1 sm:px-4 sm:py-2 mx-1 sm:mx-2 font-semibold rounded-lg text-sm sm:text-base ${
+            role="tab"
+            aria-selected={activeTab === category}
+            className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-bold transition-colors sm:px-5 ${
               activeTab === category
                 ? "bg-primary text-white"
-                : "bg-white text-primary"
+                : "bg-white text-primary hover:bg-primary/10"
             }`}
           >
             {category}
@@ -100,18 +104,18 @@ export const Usluge = () => {
         ))}
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-lg">
+      <div className="overflow-hidden rounded-2xl bg-white shadow-lg shadow-primary/10">
         {services
           .filter((service) => service.category === activeTab)
           .map((service, index, filteredServices) => (
             <div
               key={service.id}
-              className={`flex flex-col ${
+              className={`flex flex-col gap-2 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7 ${
                 index === filteredServices.length - 1 ? "" : "border-b"
-              } py-4`}
+              }`}
             >
-              <div className="flex justify-between text-base sm:text-lg font-medium">
-                <span>{service.name}</span>
+              <div className="flex min-w-0 justify-between gap-4 text-base font-medium sm:text-lg">
+                <span className="break-words">{service.name}</span>
                 {typeof service.price === "string" && (
                   <span className="text-primary font-semibold">
                     {service.price}
@@ -121,6 +125,7 @@ export const Usluge = () => {
               {typeof service.price !== "string" && renderPrice(service.price)}
             </div>
           ))}
+      </div>
       </div>
     </section>
   );

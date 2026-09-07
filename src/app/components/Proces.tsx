@@ -76,29 +76,33 @@ export const Proces = () => {
   const procesPreview = processes.map((process, index) => {
     return (
       <div className="flex flex-col gap-2" key={process.id}>
-        <div className="flex gap-3 items-center justify-between py-2">
-          <div className="flex gap-2 items-center">
+        <div className="flex items-center justify-between gap-4 py-3">
+          <div className="flex min-w-0 items-center gap-3">
             {renderIcon(process.id)}
-            <p className="uppercase text-base font-bold">{process.title}</p>
+            <p className="text-sm font-bold text-slate-800 sm:text-base">{process.title}</p>
           </div>
           {activeProcess === process.id ? (
             <button
               onClick={() => setActiveProcess(0)}
-              aria-label="close preview"
+              aria-label={`Zatvori ${process.title}`}
+              aria-expanded="true"
+              className="shrink-0 rounded-full p-1 text-primary transition-colors hover:bg-blue-50"
             >
-              <FaMinusCircle className="text-xl text-primary" />
+              <FaMinusCircle className="text-xl" />
             </button>
           ) : (
             <button
               onClick={() => setActiveProcess(process.id)}
-              aria-label="open preview"
+              aria-label={`Otvori ${process.title}`}
+              aria-expanded="false"
+              className="shrink-0 rounded-full p-1 text-primary transition-colors hover:bg-blue-50"
             >
-              <FaPlusCircle className="text-xl text-primary" />
+              <FaPlusCircle className="text-xl" />
             </button>
           )}
         </div>
         {activeProcess === process.id && (
-          <p className="text-sm">{process.description}</p>
+          <p className="max-w-2xl pb-2 text-sm leading-6 text-slate-600">{process.description}</p>
         )}
       </div>
     );
@@ -107,16 +111,16 @@ export const Proces = () => {
   return (
     <section
       id="process"
-      className="flex flex-col lg:flex-row bg-white gap-10 py-12 sm:py-20 px-8 sm:px-20 w-full"
+      className="section-shell grid gap-10 bg-white lg:grid-cols-[1fr_0.9fr] lg:items-center"
     >
-      <div className="flex-1 flex flex-col gap-6">
-        <h1 className="uppercase text-primary text-xl font-bold">
+      <div className="flex flex-col gap-5">
+        <p className="eyebrow">
           Kako mi to radimo
-        </h1>
-        <h2 className="uppercase text-3xl font-extrabold">proces</h2>
-        <div className="flex flex-col space-y-3 divide-y">{procesPreview}</div>
+        </p>
+        <h2 className="font-raleway text-3xl font-extrabold text-slate-900 sm:text-4xl">Proces čišćenja</h2>
+        <div className="divide-y divide-blue-100">{procesPreview}</div>
       </div>
-      <div className="flex-1  shadow-xl rounded-xl overflow-hidden">
+      <div className="overflow-hidden rounded-2xl shadow-xl shadow-primary/10">
         <Image
           src="/centrifuga.jpg"
           width={540}
