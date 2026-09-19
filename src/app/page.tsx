@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import {
   FaPersonBooth,
@@ -7,6 +8,21 @@ import {
 } from "react-icons/fa";
 import { Proces } from "./components/Proces";
 import { Usluge } from "./components/Service";
+
+export const metadata: Metadata = {
+  title: "Fresh | Pranje tepiha u Zagrebu",
+  description:
+    "Profesionalno pranje tepiha, kemijsko čišćenje i čišćenje namještaja u Zagrebu. Besplatna dostava i brza usluga.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Fresh | Pranje tepiha u Zagrebu",
+    description:
+      "Besplatna dostava, profesionalno pranje tepiha i dubinsko čišćenje za dom i ured u Zagrebu.",
+    url: "https://fresh-ciscenje.hr/",
+  },
+};
 
 export default function Home() {
   return (
@@ -56,11 +72,16 @@ export default function Home() {
           <h2 className="uppercase text-3xl font-extrabold">O nama</h2>
           <p className="">
             Naša firma je specijalizirana za profesionalno i dubinsko pranje
-            tepiha, koristeći najnovije tehnike i ekološki prihvatljive
+            tepiha u Zagrebu, koristeći najnovije tehnike i ekološki prihvatljive
             proizvode. Ponosimo se brzom i efikasnom uslugom, osiguravajući da
             vaši tepisi budu čisti, svježi i suhi u najkraćem mogućem
-            roku.Pružamo besplatnu uslugu preuzimanja i dostave tepiha, čineći
+            roku. Pružamo besplatnu uslugu preuzimanja i dostave tepiha, čineći
             cijeli proces pranja bezbrižnim i jednostavnim za naše klijente.
+          </p>
+          <p className="text-base text-gray-700">
+            Bilo da se radi o kućnim tepihima, uredskim tepihima, namještaju ili
+            automobilskim presvlakama, pružamo usluge čišćenja za dom, poslovni
+            prostor i vozila u Zagrebu i okolici.
           </p>
           <div className="flex flex-col gap-6">
             <div className="flex gap-3 items-center">
@@ -103,6 +124,50 @@ export default function Home() {
 
       <Proces />
       <Usluge />
+
+      <section className="w-full bg-white px-8 py-12 sm:px-20 sm:py-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-8 flex flex-col gap-3">
+            <p className="text-primary text-xl font-bold uppercase">FAQ</p>
+            <h2 className="text-3xl font-extrabold uppercase text-gray-900">
+              Najčešća pitanja o pranju tepiha
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <article className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
+              <h3 className="mb-2 text-lg font-bold text-primary">
+                Koliko traje čišćenje tepiha?
+              </h3>
+              <p className="text-sm leading-6 text-gray-700">
+                Ovisno o veličini i vrsti tepiha, proces obično traje od nekoliko
+                sati do najviše nekoliko dana, uključujući sušenje i završno
+                usisavanje.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
+              <h3 className="mb-2 text-lg font-bold text-primary">
+                Da li radite i uredske tepise?
+              </h3>
+              <p className="text-sm leading-6 text-gray-700">
+                Da, čistimo i kućne i uredske tepise, tapisone, presvlake i
+                druge tekstilne površine za dom i poslovni prostor.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
+              <h3 className="mb-2 text-lg font-bold text-primary">
+                Nudite li besplatnu dostavu?
+              </h3>
+              <p className="text-sm leading-6 text-gray-700">
+                Da, pružamo besplatnu uslugu preuzimanja i dostave tepiha za naše
+                klijente u Zagrebu i okolici.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

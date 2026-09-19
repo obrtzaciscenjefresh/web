@@ -34,24 +34,89 @@ export const Footer = () => {
         <div className="flex flex-col gap-10 flex-1">
           <div className="flex-col gap-4 hidden xs:flex">
             <nav className="bg-white">
-              <ul className="flex px-2 space-x-4 text-primary font-semibold">
-                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
-                  <Link href="/">Početna</Link>
+              <ul className="flex flex-wrap items-center gap-2 px-2 text-primary font-semibold">
+                <li className="list-none">
+                  <Link
+                    href="/"
+                    className="block rounded-md px-2 py-2 text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer"
+                  >
+                    Početna
+                  </Link>
                 </li>
-                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base break-keep">
-                  <Link href="#onama" className="whitespace-nowrap">O nama</Link>
+                <li className="list-none">
+                  <Link
+                    href="#onama"
+                    className="block rounded-md px-2 py-2 whitespace-nowrap text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer"
+                  >
+                    O nama
+                  </Link>
                 </li>
-                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
-                  <Link href="/kucni-tepis" className="whitespace-nowrap">Kucni tepisi</Link>
+                <li className="list-none">
+                  <Link
+                    href="/kucni-tepisi"
+                    className="block rounded-md px-2 py-2 whitespace-nowrap text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer"
+                  >
+                    Kućni tepisi
+                  </Link>
                 </li>
-                <li className="py-2 hover:bg-blue-100 hover:text-primary flex items-center text-xs md:text-base">
-                  <Link href="/uredski-tepis" className="whitespace-nowrap">Uredski tepisi</Link>
+                <li className="list-none">
+                  <Link
+                    href="/uredski-tepisi"
+                    className="block rounded-md px-2 py-2 whitespace-nowrap text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer"
+                  >
+                    Uredski tepisi
+                  </Link>
                 </li>
-                <li className="py-2 hover:bg-blue-100 hover:text-primary hidden sm:flex items-center text-xs md:text-base">
-                  <Link href="#usluge">Usluge</Link>
+                <li className="list-none hidden sm:block">
+                  <Link
+                    href="#usluge"
+                    className="block rounded-md px-2 py-2 text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer"
+                  >
+                    Usluge
+                  </Link>
+                </li>
+                <li className="list-none">
+                  <Link
+                    href="/kontakt"
+                    className="block rounded-md px-2 py-2 text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer"
+                  >
+                    Kontakt
+                  </Link>
                 </li>
               </ul>
             </nav>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <h3 className="text-lg font-semibold uppercase tracking-wide text-white">
+              Pravni dokumenti
+            </h3>
+            <ul className="flex flex-col gap-2 text-sm text-gray-100">
+              <li>
+                <Link
+                  href="/opci-uvjeti-poslovanja"
+                  className="transition-colors hover:text-white hover:underline"
+                >
+                  Opći uvjeti poslovanja
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/opci-uvjeti-poslovanja-pranje-tepiha"
+                  className="transition-colors hover:text-white hover:underline"
+                >
+                  Opći uvjeti poslovanja – pranje tepiha
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/pravila-privatnosti"
+                  className="transition-colors hover:text-white hover:underline"
+                >
+                  Pravila privatnosti
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div className="flex flex-col gap-4" id="kontakt">
@@ -73,7 +138,7 @@ export const Footer = () => {
                 <MdPhone />
               </div>
               <a
-                href="Tel:+385922416743"
+                href="tel:+385922416743"
                 className="text-sm text-gray-100 hover:text-blue-500 hover:underline transition-colors"
               >
                 + 385 (92) 241-6743

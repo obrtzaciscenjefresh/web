@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Head from "next/head";
 import { Raleway, Roboto } from "next/font/google";
 import "./globals.css";
 import { Header } from "./layout/Header";
 import { Footer } from "./layout/Footer";
 import Script from "next/script";
+import CookieConsent from "./components/CookieConsent";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -12,6 +12,7 @@ const roboto = Roboto({
   display: "swap",
   variable: "--font-roboto",
 });
+
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ["400", "500", "700", "800"],
@@ -19,9 +20,115 @@ const raleway = Raleway({
   variable: "--font-raleway",
 });
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Fresh",
+  image: "https://fresh-ciscenje.hr/fresh-logo.jpg",
+  telephone: "+385922416743",
+  email: "obrtzaciscenjefresh@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Vaganačka ul. 31",
+    addressLocality: "Zagreb",
+    postalCode: "10000",
+    addressCountry: "HR",
+  },
+  areaServed: "Zagreb",
+  url: "https://fresh-ciscenje.hr",
+  sameAs: [
+    "https://www.instagram.com/fresh_obrt_za_ciscenje/",
+    "https://www.facebook.com/profile.php?id=61554058824757",
+  ],
+  priceRange: "€€",
+  description:
+    "Profesionalno pranje tepiha, kemijsko čišćenje i usluge čišćenja namještaja i automobila u Zagrebu.",
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Fresh",
+  url: "https://fresh-ciscenje.hr",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://fresh-ciscenje.hr/?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      question: "Koje usluge pranja tepiha nudite u Zagrebu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Pružamo profesionalno pranje tepiha, kemijsko čišćenje, čišćenje namještaja, madraca i automobila u Zagrebu i okolici.",
+      },
+    },
+    {
+      "@type": "Question",
+      question: "Da li nudite dostavu i preuzimanje tepiha?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Da, pružamo besplatnu uslugu preuzimanja i dostave tepiha za naše klijente u Zagrebu.",
+      },
+    },
+    {
+      "@type": "Question",
+      question: "Kako izgleda postupak čišćenja tepiha?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tepih se najprije istresa, zatim pere, centrifugira, suši i završno usisava kako bi bio potpuno čist i svjež.",
+      },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: "Fresh",
-  description: "Fresh - pranje tepiha",
+  title: "Fresh | Pranje tepiha i čišćenje u Zagrebu",
+  description:
+    "Fresh - profesionalno pranje tepiha, kemijsko čišćenje, čišćenje namještaja i automobila u Zagrebu.",
+  metadataBase: new URL("https://fresh-ciscenje.hr"),
+  manifest: "/site.webmanifest",
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  keywords: [
+    "pranje tepiha Zagreb",
+    "kemijsko čišćenje Zagreb",
+    "čišćenje tepiha",
+    "kućni tepisi",
+    "uredski tepisi",
+    "Fresh",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Fresh - Pranje Tepiha i Kemijsko Čišćenje",
+    description:
+      "Vaš pouzdan partner za profesionalno pranje tepiha i kemijsko čišćenje. Brzo i efikasno čišćenje uz vrhunske rezultate.",
+    url: "https://fresh-ciscenje.hr",
+    siteName: "Fresh",
+    locale: "hr_HR",
+    type: "website",
+    images: [
+      {
+        url: "/fresh-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Fresh logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -30,53 +137,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <Head>
-        {/* Link za favicon */}
-        <link rel="icon" href="/favicon.ico" />
-        {/* Link za manifest datoteku */}
-        <link rel="manifest" href="/manifest.json" />
-        {/* Boja za status bar u mobilnim pretraživačima */}
-        <meta name="theme-color" content="#000000" />
-        {/* Open Graph Meta Tags for Facebook and Instagram */}
-        <meta
-          property="og:title"
-          content="Fresh - Pranje Tepiha i Kemijsko Čišćenje"
-        />
-        <meta
-          property="og:description"
-          content="Vaš pouzdan partner za profesionalno pranje tepiha i kemijsko čišćenje. Brzo i efikasno čišćenje uz vrhunske rezultate."
-        />
-        <meta property="og:image" content="/fresh-logo.jpg" />
-        <meta property="og:url" content="https://fresh-ciscenje.hr" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="hr_HR" />
-      </Head>
+    <html lang="hr">
       <body className={`${roboto.variable} ${raleway.variable}`}>
-        {/* Google Analytics Script */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17350004003"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
+          id="website-schema"
+          type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17350004003');
-            `,
+            __html: JSON.stringify(websiteSchema),
           }}
         />
-        <main className="flex flex-col min-h-screen relative bg-blue-50">
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
+        <div className="flex flex-col min-h-screen relative bg-blue-50">
           <Header />
           <main className="flex flex-col flex-1 justify-center items-center xl:container w-full mx-auto mt-[80px] sm:mt-[176px]">
             {children}
           </main>
           <Footer />
-        </main>
+        </div>
+        <CookieConsent />
       </body>
     </html>
   );

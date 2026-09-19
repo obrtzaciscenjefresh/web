@@ -1,4 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Uredski tepisi | Pranje i čišćenje | Fresh",
+  description:
+    "Dubinsko čišćenje uredskih tepiha u Zagrebu. Uklanjanje nečistoća, mrlja i mirisa uz brzu i profesionalnu uslugu za poslovni prostor.",
+  alternates: {
+    canonical: "/uredski-tepisi",
+  },
+  openGraph: {
+    title: "Uredski tepisi | Fresh",
+    description:
+      "Profesionalno čišćenje poslovnih i uredskih tepiha za čist i higijenski radni prostor.",
+    url: "https://fresh-ciscenje.hr/uredski-tepisi",
+  },
+};
 
 export default function UredskiTepisi() {
   return (
@@ -25,7 +41,7 @@ export default function UredskiTepisi() {
             Higijena i profesionalnost
           </h2>
           <p>
-            Dubinski i strojno čistimo tepihe i tapisone većih površina. U kratkom roku, kroz svega nekoliko dana vaš će pod prekriven tapisonom biti strojno našamponiran, iščetkan, opran i osušen. Preko vikenda očistimo kompletnu površinu vašeg poslovnog prostora prekrivenog tapisonom tako da se vratite u čisti prostor u ponedjeljak.
+            Dubinski i strojno čistimo uredske tepise i tapisone većih površina u Zagrebu. U kratkom roku, kroz svega nekoliko dana vaš će pod prekriven tapisonom biti strojno našamponiran, iščetkan, opran i osušen. Preko vikenda očistimo kompletnu površinu vašeg poslovnog prostora, tako da se vratite u čisti i higijenski ured u ponedjeljak.
           </p>
         </div>
         <div className="flex-1 flex flex-col gap-6">

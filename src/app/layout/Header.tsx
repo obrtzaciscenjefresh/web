@@ -49,7 +49,7 @@ export const Header = () => {
                     <MdPhone />
                   </div>
                   <a
-                    href="Tel:+385922416743"
+                    href="tel:+385922416743"
                     className="text-sm hover:text-blue-500 hover:underline transition-colors"
                   >
                     + 385 (92) 241-6743
@@ -87,25 +87,45 @@ export const Header = () => {
 
             <div className="flex flex-row justify-between px-6 py-6 items-center h-full w-full bg-primary">
               <nav>
-                <ul className="flex space-x-4 text-white font-semibold">
-                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
-                    <Link href="/">Početna</Link>
+                <ul className="flex items-center space-x-2 text-white font-semibold">
+                  <li className="list-none">
+                    <Link
+                      href="/"
+                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                    >
+                      Početna
+                    </Link>
                   </li>
-                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
-                    <Link href="/#onama">O nama</Link>
+                  <li className="list-none">
+                    <Link
+                      href="/#onama"
+                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                    >
+                      O nama
+                    </Link>
                   </li>
-                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
-                    <Link href="/kucni-tepisi">Kućni tepisi</Link>
+                  <li className="list-none">
+                    <Link
+                      href="/kucni-tepisi"
+                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                    >
+                      Kućni tepisi
+                    </Link>
                   </li>
-                  <li className="py-2 px-1 whitespace-nowrap hover:bg-blue-100 hover:text-primary rounded-lg text-sm md:text-base">
-                    <Link href="/uredski-tepisi">Uredski tepisi</Link>
+                  <li className="list-none">
+                    <Link
+                      href="/uredski-tepisi"
+                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                    >
+                      Uredski tepisi
+                    </Link>
                   </li>
                 </ul>
               </nav>
               <div className="flex justify-end">
                 <Link
-                  href="#kontakt"
-                  className="bg-blue-100 text-primary font-bold py-2 px-4 rounded-md"
+                  href="/kontakt"
+                  className="block rounded-md bg-blue-100 px-4 py-2 font-bold text-primary transition-colors duration-200 hover:bg-white hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
                 >
                   Kontakt
                 </Link>
@@ -131,35 +151,35 @@ export const Header = () => {
               <Link
                 href="/"
                 onClick={() => setMenuOpen(false)}
-                className="py-2"
+                className="block w-full cursor-pointer py-2 transition-colors duration-200 hover:text-primary"
               >
                 Početna
               </Link>
               <Link
                 href="/#onama"
                 onClick={() => setMenuOpen(false)}
-                className="py-2"
+                className="block w-full cursor-pointer py-2 transition-colors duration-200 hover:text-primary"
               >
                 O nama
               </Link>
               <Link
                 href="/kucni-tepisi"
                 onClick={() => setMenuOpen(false)}
-                className="py-2"
+                className="block w-full cursor-pointer py-2 transition-colors duration-200 hover:text-primary"
               >
                 Kućni tepisi
               </Link>
               <Link
                 href="/uredski-tepisi"
                 onClick={() => setMenuOpen(false)}
-                className="py-2"
+                className="block w-full cursor-pointer py-2 transition-colors duration-200 hover:text-primary"
               >
                 Uredski tepisi
               </Link>
               <Link
-                href="#kontakt"
+                href="/kontakt"
                 onClick={() => setMenuOpen(false)}
-                className="py-2"
+                className="block w-full cursor-pointer py-2 transition-colors duration-200 hover:text-primary"
               >
                 Kontakt
               </Link>

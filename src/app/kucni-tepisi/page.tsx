@@ -1,4 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Kućni tepisi | Pranje i čišćenje | Fresh",
+  description:
+    "Profesionalno pranje kućnih tepiha u Zagrebu. Dubinsko čišćenje, uklanjanje mrlja, alergena i prašine uz besplatnu dostavu.",
+  alternates: {
+    canonical: "/kucni-tepisi",
+  },
+  openGraph: {
+    title: "Kućni tepisi | Fresh",
+    description:
+      "Naš profesionalni tretman za kućne tepise uklanja prašinu, alergene i mrlje te vraća svježinu i čistoću.",
+    url: "https://fresh-ciscenje.hr/kucni-tepisi",
+  },
+};
 
 export default function KucniTepisi() {
   return (
@@ -25,10 +41,10 @@ export default function KucniTepisi() {
             Čistoća i svježina
           </h2>
           <p>
-            Strojno pranje tepiha je metoda temeljitog čišćenja tepiha pomoću profesionalnih strojeva.
+            Strojno pranje tepiha u Zagrebu je metoda temeljitog čišćenja tepiha pomoću profesionalnih strojeva i ekološki prihvatljivih sredstava.
           </p>
           <p>
-            Ovim postupkom uklanjaju se sve nečistoće, prašina, alergeni i mrlje koje se ne mogu ukloniti standardnim i površinskim čišćenjem.
+            Ovim postupkom uklanjaju se sve nečistoće, prašina, alergeni i mrlje koje se ne mogu ukloniti standardnim i površinskim čišćenjem, a tepih ponovno dobiva svježinu i čistoću u domaćinstvu.
           </p>
         </div>
         <div className="flex-1 flex flex-col gap-6">
