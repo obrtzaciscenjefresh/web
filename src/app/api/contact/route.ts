@@ -6,19 +6,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { ime, email, telefon, adresa, kat, datumPrikupa, napomena, prihvacam } = body;
+    const { ime, email, telefon, adresa, kat, napomena, prihvacam } = body;
 
     if (!ime || !email || !telefon || !adresa || !prihvacam) {
       return NextResponse.json(
         { error: "Sva obavezna polja moraju biti popunjena." },
-        { status: 400 }
-      );
-    }
-
-    const today = new Date().toISOString().split("T")[0];
-    if (datumPrikupa && (!/^\d{4}-\d{2}-\d{2}$/.test(datumPrikupa) || datumPrikupa < today)) {
-      return NextResponse.json(
-        { error: "Odaberite valjani datum prikupa koji nije u prošlosti." },
         { status: 400 }
       );
     }
@@ -30,7 +22,6 @@ export async function POST(request: Request) {
       <p><strong>Telefon:</strong> ${telefon}</p>
       <p><strong>Adresa prikupa:</strong> ${adresa}</p>
       <p><strong>Kat / lokacija:</strong> ${kat || "-"}</p>
-      <p><strong>Željeni dan prikupa:</strong> ${datumPrikupa}</p>
       <p><strong>Napomena:</strong> ${napomena || "-"}</p>
       <p><strong>Prihvaćanje uvjeta:</strong> Da</p>
     `;

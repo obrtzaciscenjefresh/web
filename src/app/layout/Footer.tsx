@@ -78,7 +78,7 @@ export const Footer = () => {
                 <li className="list-none">
                   <Link
                     href="/kontakt"
-                    className="block rounded-md px-2 py-2 text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer"
+                    className="block rounded-md px-2 py-2 text-xs transition-colors duration-200 hover:bg-blue-100 hover:text-primary md:text-base cursor-pointer whitespace-nowrap"
                   >
                     Kontakt
                   </Link>

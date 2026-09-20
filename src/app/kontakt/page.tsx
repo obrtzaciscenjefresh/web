@@ -8,12 +8,9 @@ const initialForm = {
   telefon: "",
   adresa: "",
   kat: "",
-  datumPrikupa: "",
   napomena: "",
   prihvacam: false,
 };
-
-const getToday = () => new Date().toISOString().split("T")[0];
 
 export default function KontaktPage() {
   const [form, setForm] = useState(initialForm);
@@ -164,21 +161,6 @@ export default function KontaktPage() {
               value={form.kat}
               onChange={handleChange}
               placeholder="npr. 2. kat, bez lifta"
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-primary"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="datumPrikupa" className="block text-sm font-semibold text-gray-700">
-              Željeni Dan Prikupa
-            </label>
-            <input
-              id="datumPrikupa"
-              name="datumPrikupa"
-              type="date"
-              min={getToday()}
-              value={form.datumPrikupa}
-              onChange={handleChange}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-primary"
             />
           </div>

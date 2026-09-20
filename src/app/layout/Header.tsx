@@ -91,7 +91,7 @@ export const Header = () => {
                   <li className="list-none">
                     <Link
                       href="/"
-                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                      className="block rounded-lg px-2 py-2 text-[11px] whitespace-nowrap transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer sm:text-xs md:text-sm lg:text-base"
                     >
                       Početna
                     </Link>
@@ -99,7 +99,7 @@ export const Header = () => {
                   <li className="list-none">
                     <Link
                       href="/#onama"
-                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                      className="block rounded-lg px-2 py-2 text-[11px] whitespace-nowrap transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer sm:text-xs md:text-sm lg:text-base"
                     >
                       O nama
                     </Link>
@@ -107,7 +107,7 @@ export const Header = () => {
                   <li className="list-none">
                     <Link
                       href="/kucni-tepisi"
-                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                      className="block rounded-lg px-2 py-2 text-[11px] whitespace-nowrap transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer sm:text-xs md:text-sm lg:text-base"
                     >
                       Kućni tepisi
                     </Link>
@@ -115,7 +115,7 @@ export const Header = () => {
                   <li className="list-none">
                     <Link
                       href="/uredski-tepisi"
-                      className="block rounded-lg px-2 py-2 text-sm md:text-base transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                      className="block rounded-lg px-2 py-2 text-[11px] whitespace-nowrap transition-colors duration-200 hover:bg-blue-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer sm:text-xs md:text-sm lg:text-base"
                     >
                       Uredski tepisi
                     </Link>
@@ -125,9 +125,9 @@ export const Header = () => {
               <div className="flex justify-end">
                 <Link
                   href="/kontakt"
-                  className="block rounded-md bg-blue-100 px-4 py-2 font-bold text-primary transition-colors duration-200 hover:bg-white hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                  className="block rounded-md bg-blue-100 px-3 py-2 text-[10px] font-extrabold uppercase tracking-tight text-primary transition-colors duration-200 hover:bg-white hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer whitespace-nowrap sm:px-3 sm:py-2 sm:text-[11px] md:px-4 md:text-xs lg:text-sm"
                 >
-                  Kontakt
+                  Naručite pranje
                 </Link>
               </div>
             </div>
