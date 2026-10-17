@@ -1,76 +1,57 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
+import cjenik from "@/app/data/cjenik.json";
+
+type PriceOption = {
+  label?: string;
+  price: number;
+  anchorPrice: number;
+  unit?: string;
+  from?: boolean;
+};
 
 type Service = {
   id: number;
   name: string;
-  price: string | Record<string, string>;
   category: string;
+  note?: string;
+  options: PriceOption[];
 };
 
-const services: Service[] = [
-  { id: 1, name: "Tepisi", price: "6 € po m²", category: "Tepisi" },
-  {
-    id: 2,
-    name: "Kutna garnitura",
-    price: { Mala: "60 €", Srednja: "75 €", XL: "85 €" },
-    category: "Namještaj",
-  },
-  { id: 3, name: "Trosjed", price: "55 €", category: "Namještaj" },
-  { id: 4, name: "Dvosjed", price: "45 €", category: "Namještaj" },
-  { id: 5, name: "Fotelja", price: "25 €", category: "Namještaj" },
-  { id: 6, name: "Tabure", price: "15 €", category: "Namještaj" },
-  { id: 7, name: "Jastuk", price: "5 €", category: "Namještaj" },
-  {
-    id: 8,
-    name: "Madrac",
-    price: { Jednostrano: "30 €", Obostrano: "40 €" },
-    category: "Madraci",
-  },
-  {
-    id: 9,
-    name: "Bračni madrac",
-    price: { Jednostrano: "40 €", Obostrano: "55 €" },
-    category: "Madraci",
-  },
-  { id: 10, name: "Autosjedala", price: "90 €", category: "Vozila" },
-  { id: 11, name: "Auto", price: "od 130 €", category: "Vozila" },
-  {
-    id: 12,
-    name: "Uredski tepisi",
-    price: "Cijena po dogovoru",
-    category: "Tepisi",
-  },
-];
+const { anchorDate, services } = cjenik as {
+  anchorDate: string;
+  services: Service[];
+};
 
 const categories = Array.from(
   new Set(services.map((service) => service.category))
 );
 
+const [anchorYear, anchorMonth, anchorDay] = anchorDate.split("-").map(Number);
+const anchorLabel = `${anchorDay}. ${anchorMonth}. ${anchorYear}.`;
+
+const formatAmount = (amount: number) =>
+  `${amount.toFixed(2).replace(".", ",")} €`;
+
+const formatPrice = (option: PriceOption, amount: number) =>
+  `${option.from ? "od " : ""}${formatAmount(amount)}${
+    option.unit ? ` po ${option.unit}` : ""
+  }`;
+
+const PriceBlock = ({ option }: { option: PriceOption }) => (
+  <div className="text-right">
+    <p className="text-base sm:text-lg font-semibold text-primary">
+      {formatPrice(option, option.price)}
+    </p>
+    <p className="text-[11px] sm:text-[13px] text-gray-500/80">
+      Cijena na dan {anchorLabel}: {formatPrice(option, option.anchorPrice)}
+    </p>
+  </div>
+);
+
 export const Usluge = () => {
   const [activeTab, setActiveTab] = useState(categories[0]);
-
-  const renderPrice = (price: string | Record<string, string>) => {
-    if (typeof price === "string") {
-      return (
-        <p className="text-base sm:text-lg font-semibold text-primary">
-          {price}
-        </p>
-      );
-    }
-    return (
-      <ul className="space-y-1">
-        {Object.entries(price).map(([option, cost], index) => (
-          <li key={option} className="flex justify-between text-gray-700">
-            <span className="ml-4">{option}</span>
-            <span className="text-base sm:text-lg font-semibold text-primary">
-              {cost}
-            </span>
-          </li>
-        ))}
-      </ul>
-    );
-  };
 
   return (
     <section
@@ -103,25 +84,53 @@ export const Usluge = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg">
         {services
           .filter((service) => service.category === activeTab)
-          .map((service, index, filteredServices) => (
-            <div
-              key={service.id}
-              className={`flex flex-col ${
-                index === filteredServices.length - 1 ? "" : "border-b"
-              } py-4`}
-            >
-              <div className="flex justify-between text-base sm:text-lg font-medium">
-                <span>{service.name}</span>
-                {typeof service.price === "string" && (
-                  <span className="text-primary font-semibold">
-                    {service.price}
-                  </span>
+          .map((service, index, filteredServices) => {
+            const isSingle =
+              service.options.length === 1 && !service.options[0].label;
+
+            return (
+              <div
+                key={service.id}
+                className={`flex flex-col ${
+                  index === filteredServices.length - 1 ? "" : "border-b"
+                } py-4`}
+              >
+                <div className="flex justify-between items-start gap-4 text-base sm:text-lg font-medium">
+                  <span>{service.name}</span>
+                  {isSingle && <PriceBlock option={service.options[0]} />}
+                  {service.options.length === 0 && (
+                    <span className="text-primary font-semibold">
+                      {service.note}
+                    </span>
+                  )}
+                </div>
+                {!isSingle && service.options.length > 0 && (
+                  <ul className="space-y-2 mt-1">
+                    {service.options.map((option) => (
+                      <li
+                        key={option.label}
+                        className="flex justify-between items-start gap-4 text-gray-700"
+                      >
+                        <span className="ml-4">{option.label}</span>
+                        <PriceBlock option={option} />
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
-              {typeof service.price !== "string" && renderPrice(service.price)}
-            </div>
-          ))}
+            );
+          })}
       </div>
+
+      <p className="text-sm text-gray-600">
+        Uz svaku cijenu navedena je i cijena na dan {anchorLabel} u skladu s
+        Odlukom Vlade RH o isticanju dodatne cijene. Cjenik u strojno čitljivom
+        obliku (CSV i XML) dostupan je na stranici{" "}
+        <Link href="/cjenik" className="font-semibold text-primary underline">
+          Cjenik usluga
+        </Link>
+        .
+      </p>
     </section>
   );
 };

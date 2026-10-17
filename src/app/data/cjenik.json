@@ -1,0 +1,93 @@
+{
+  "anchorDate": "2026-09-10",
+  "object": {
+    "kind": "servis",
+    "address": "Vaganačka ulica 31 Zagreb",
+    "code": "U-01"
+  },
+  "services": [
+    {
+      "id": 1,
+      "name": "Tepisi",
+      "category": "Tepisi",
+      "options": [{ "price": 6, "anchorPrice": 6, "unit": "m²" }]
+    },
+    {
+      "id": 2,
+      "name": "Kutna garnitura",
+      "category": "Namještaj",
+      "options": [
+        { "label": "Mala", "price": 60, "anchorPrice": 60 },
+        { "label": "Srednja", "price": 75, "anchorPrice": 75 },
+        { "label": "XL", "price": 85, "anchorPrice": 85 }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Trosjed",
+      "category": "Namještaj",
+      "options": [{ "price": 55, "anchorPrice": 55 }]
+    },
+    {
+      "id": 4,
+      "name": "Dvosjed",
+      "category": "Namještaj",
+      "options": [{ "price": 45, "anchorPrice": 45 }]
+    },
+    {
+      "id": 5,
+      "name": "Fotelja",
+      "category": "Namještaj",
+      "options": [{ "price": 25, "anchorPrice": 25 }]
+    },
+    {
+      "id": 6,
+      "name": "Tabure",
+      "category": "Namještaj",
+      "options": [{ "price": 15, "anchorPrice": 15 }]
+    },
+    {
+      "id": 7,
+      "name": "Jastuk",
+      "category": "Namještaj",
+      "options": [{ "price": 5, "anchorPrice": 5 }]
+    },
+    {
+      "id": 8,
+      "name": "Madrac",
+      "category": "Madraci",
+      "options": [
+        { "label": "Jednostrano", "price": 30, "anchorPrice": 30 },
+        { "label": "Obostrano", "price": 40, "anchorPrice": 40 }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Bračni madrac",
+      "category": "Madraci",
+      "options": [
+        { "label": "Jednostrano", "price": 40, "anchorPrice": 40 },
+        { "label": "Obostrano", "price": 55, "anchorPrice": 55 }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Autosjedala",
+      "category": "Vozila",
+      "options": [{ "price": 90, "anchorPrice": 90 }]
+    },
+    {
+      "id": 11,
+      "name": "Auto",
+      "category": "Vozila",
+      "options": [{ "price": 130, "anchorPrice": 130, "from": true }]
+    },
+    {
+      "id": 12,
+      "name": "Uredski tepisi",
+      "category": "Tepisi",
+      "note": "Cijena po dogovoru",
+      "options": []
+    }
+  ]
+}

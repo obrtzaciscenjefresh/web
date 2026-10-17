@@ -116,6 +116,14 @@ export const Footer = () => {
                   Pravila privatnosti
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/cjenik"
+                  className="transition-colors hover:text-white hover:underline"
+                >
+                  Cjenik usluga (CSV / XML)
+                </Link>
+              </li>
             </ul>
           </div>
 
