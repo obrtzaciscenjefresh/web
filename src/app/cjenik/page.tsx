@@ -1,109 +1,155 @@
 import type { Metadata } from "next";
-import { existsSync, readdirSync } from "node:fs";
-import { join } from "node:path";
+import { FaFileCsv, FaFileCode } from "react-icons/fa6";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { anchorLabel } from "@/components/ui/PriceTag";
+import {
+  ANCHOR_DATE,
+  currentPublication,
+  currentPrices,
+  priceListPublications,
+} from "@/data/pricing";
+import { formatDateHr, formatDateTimeHr, formatEuro } from "@/lib/format";
+import { priceListFileName } from "@/lib/price-list";
+import { fullAddress, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cjenik usluga | Fresh",
+  title: "Cjenik usluga (CSV / XML)",
   description:
-    "Cjenik usluga u strojno čitljivom obliku (CSV i XML) s dodatnom cijenom na dan 10. rujna 2026.",
-  alternates: {
-    canonical: "/cjenik",
-  },
+    "Važeći cjenik usluga pranja tepiha i čišćenja obrta Fresh s cijenama na referentni datum, u strojno čitljivom CSV i XML formatu.",
+  alternates: { canonical: "/cjenik" },
 };
 
-type PriceList = {
-  number: number;
-  date: string;
-  time: string;
-  files: { format: "csv" | "xml"; name: string }[];
-};
-
-// Datoteke se imenuju: objekt_adresa_oznaka_brojPohrane_datum_vrijeme.csv|xml
-const getPriceLists = (): PriceList[] => {
-  const dir = join(process.cwd(), "public", "cjenici");
-  if (!existsSync(dir)) return [];
-
-  const lists = new Map<number, PriceList>();
-  for (const name of readdirSync(dir)) {
-    const match = name.match(/\.(csv|xml)$/);
-    if (!match) continue;
-    const [, , , number, date, time] = name.replace(/\.(csv|xml)$/, "").split("_");
-    const key = Number(number);
-    const list = lists.get(key) ?? { number: key, date, time, files: [] };
-    list.files.push({ format: match[1] as "csv" | "xml", name });
-    lists.set(key, list);
-  }
-  return Array.from(lists.values()).sort((a, b) => b.number - a.number);
-};
-
-const FileLinks = ({ list }: { list: PriceList }) => (
-  <div className="flex gap-3">
-    {list.files
-      .sort((a, b) => a.format.localeCompare(b.format))
-      .map((file) => (
-        <a
-          key={file.format}
-          href={`/cjenici/${encodeURIComponent(file.name)}`}
-          download
-          className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold uppercase text-white transition-opacity hover:opacity-80"
-        >
-          {file.format}
-        </a>
-      ))}
-  </div>
-);
+const files = [
+  { format: "csv", label: "CSV", Icon: FaFileCsv },
+  { format: "xml", label: "XML", Icon: FaFileCode },
+] as const;
 
 export default function CjenikPage() {
-  const [current, ...archive] = getPriceLists();
+  const archive = [...priceListPublications].reverse();
 
   return (
-    <main className="flex w-full flex-col items-center px-4 py-16 sm:px-8 lg:px-20">
-      <article className="w-full max-w-5xl rounded-2xl bg-white p-6 shadow-xl sm:p-10">
-        <p className="text-xl font-bold uppercase text-primary">Cjenik usluga</p>
-        <h1 className="mt-2 text-3xl font-extrabold uppercase text-gray-900">
-          Cjenik u strojno čitljivom obliku
-        </h1>
+    <>
+      <Breadcrumbs items={[{ href: "/cjenik", label: "Cjenik" }]} />
+      <Container className="flex flex-col gap-12 py-10 sm:py-16">
+        <SectionHeading
+          as="h1"
+          eyebrow="Cjenik"
+          title="Cjenik usluga"
+          description={
+            <>
+              Važeći cjenik usluga s cijenama na {formatDateHr(ANCHOR_DATE)}, objavljen sukladno
+              Odluci o objavi cjenika proizvoda i usluga i Odluci o isticanju dodatne cijene
+              (NN 101/2026). Objavljeno {formatDateTimeHr(currentPublication.publishedAt)}.
+            </>
+          }
+        />
 
-        <div className="mt-8 space-y-7 text-gray-700">
-          <p>
-            Cjenik usluga s dodatnom cijenom (cijena na dan 10. rujna 2026.) objavljujemo u
-            CSV i XML obliku. Prethodni cjenici ostaju dostupni u arhivi najmanje 30 dana.
-          </p>
-
-          <section>
-            <h2 className="mb-3 text-xl font-bold text-gray-900">Važeći cjenik</h2>
-            {current ? (
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-blue-100 p-4">
-                <span className="font-medium">
-                  Objavljeno {current.date} u {current.time}
-                </span>
-                <FileLinks list={current} />
-              </div>
-            ) : (
-              <p>Cjenik trenutno nije objavljen.</p>
-            )}
-          </section>
-
-          {archive.length > 0 && (
-            <section>
-              <h2 className="mb-3 text-xl font-bold text-gray-900">Arhiva cjenika</h2>
-              <ul className="space-y-2">
-                {archive.map((list) => (
-                  <li
-                    key={list.number}
-                    className="flex flex-wrap items-center justify-between gap-3 border-b py-2"
+        <section aria-labelledby="datoteke" className="flex flex-col gap-4">
+          <h2 id="datoteke" className="text-xl font-bold text-ink">
+            Strojno čitljive datoteke
+          </h2>
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {files.map(({ format, label, Icon }) => {
+              const name = priceListFileName(currentPublication, format);
+              return (
+                <li key={format}>
+                  <a
+                    href={`/cjenik/${name}`}
+                    className="flex items-center gap-4 rounded-3xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-lg hover:shadow-slate-900/5"
                   >
-                    <span>
-                      {list.date} u {list.time}
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-50 text-xl text-primary">
+                      <Icon aria-hidden />
                     </span>
-                    <FileLinks list={list} />
-                  </li>
+                    <span className="min-w-0">
+                      <span className="block font-bold text-ink">Cjenik ({label})</span>
+                      <span className="block text-xs break-all text-muted">{name}</span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="text-sm text-muted">
+            Stalne adrese najnovijeg cjenika:{" "}
+            <a href="/cjenik.csv" className="font-semibold text-primary underline underline-offset-2">
+              {site.url}/cjenik.csv
+            </a>{" "}
+            i{" "}
+            <a href="/cjenik.xml" className="font-semibold text-primary underline underline-offset-2">
+              {site.url}/cjenik.xml
+            </a>
+            . Datoteke su u UTF-8 kodiranju, iznosi su u eurima.
+          </p>
+        </section>
+
+        <section aria-labelledby="usluge" className="flex flex-col gap-4">
+          <h2 id="usluge" className="text-xl font-bold text-ink">
+            Usluge i cijene
+          </h2>
+          <div className="overflow-x-auto rounded-3xl border border-slate-200">
+            <table className="w-full min-w-[40rem] text-left text-sm">
+              <thead className="bg-slate-50 text-xs uppercase tracking-wider text-muted">
+                <tr>
+                  <th scope="col" className="px-5 py-4">Usluga</th>
+                  <th scope="col" className="px-5 py-4">Šifra</th>
+                  <th scope="col" className="px-5 py-4">Jedinica</th>
+                  <th scope="col" className="px-5 py-4 text-right">Cijena</th>
+                  <th scope="col" className="px-5 py-4 text-right">Sidrena cijena</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {currentPrices.map((item) => (
+                  <tr key={item.code}>
+                    <th scope="row" className="px-5 py-4 font-semibold text-ink">
+                      {item.name}
+                    </th>
+                    <td className="px-5 py-4 text-muted">{item.code}</td>
+                    <td className="px-5 py-4 text-muted">{item.unit}</td>
+                    <td className="px-5 py-4 text-right font-bold whitespace-nowrap text-primary">
+                      {item.priceFrom ? "od " : ""}
+                      {formatEuro(item.price)}
+                    </td>
+                    <td className="px-5 py-4 text-right whitespace-nowrap text-muted">
+                      {anchorLabel(item)}
+                    </td>
+                  </tr>
                 ))}
-              </ul>
-            </section>
-          )}
-        </div>
-      </article>
-    </main>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section aria-labelledby="arhiva" className="flex flex-col gap-4">
+          <h2 id="arhiva" className="text-xl font-bold text-ink">
+            Objavljeni cjenici
+          </h2>
+          <ul className="flex flex-col gap-2 text-sm">
+            {archive.map((publication) => (
+              <li key={publication.publishedAt} className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                <span className="font-semibold text-ink">
+                  {formatDateTimeHr(publication.publishedAt)} (pohrana {publication.sequence})
+                </span>
+                {files.map(({ format, label }) => (
+                  <a
+                    key={format}
+                    href={`/cjenik/${priceListFileName(publication, format)}`}
+                    className="font-semibold text-primary underline underline-offset-2"
+                  >
+                    {label}
+                  </a>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <p className="text-sm leading-6 text-muted">
+          Pružatelj usluge: {site.legalName}, {fullAddress}, MB {site.registrationNumber}.
+          Oznaka uslužnog objekta: {site.premises.code}.
+        </p>
+      </Container>
+    </>
   );
 }

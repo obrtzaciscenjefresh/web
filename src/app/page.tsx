@@ -1,173 +1,79 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import {
-  FaPersonBooth,
-  FaPeopleCarry,
-  FaPagelines,
-  FaTools,
-} from "react-icons/fa";
-import { Proces } from "./components/Proces";
-import { Usluge } from "./components/Service";
+import { FaPhone, FaStar } from "react-icons/fa6";
+import { About } from "@/components/sections/About";
+import { BeforeAfter, beforeAfterPairs } from "@/components/sections/BeforeAfter";
+import { CtaBanner } from "@/components/sections/CtaBanner";
+import { Faq } from "@/components/sections/Faq";
+import { Hero } from "@/components/sections/Hero";
+import { Highlights } from "@/components/sections/Highlights";
+import { Pricing } from "@/components/sections/Pricing";
+import { Process } from "@/components/sections/Process";
+import { Reviews } from "@/components/sections/Reviews";
+import { ServicesOverview } from "@/components/sections/ServicesOverview";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { homeFaq } from "@/data/faq";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Fresh | Pranje tepiha u Zagrebu",
+  title: { absolute: "Pranje tepiha Zagreb | Besplatna dostava | Fresh" },
   description:
-    "Profesionalno pranje tepiha, kemijsko čišćenje i čišćenje namještaja u Zagrebu. Besplatna dostava i brza usluga.",
-  alternates: {
-    canonical: "/",
-  },
+    "Strojno pranje tepiha u Zagrebu uz besplatno preuzimanje i dostavu. Kućni i uredski tepisi, tapisoni, kemijsko čišćenje namještaja, madraca i automobila.",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Fresh | Pranje tepiha u Zagrebu",
+    title: "Pranje tepiha Zagreb | Fresh",
     description:
-      "Besplatna dostava, profesionalno pranje tepiha i dubinsko čišćenje za dom i ured u Zagrebu.",
-    url: "https://fresh-ciscenje.hr/",
+      "Besplatno preuzimanje i dostava, strojno pranje i sušenje u komori. Preko 1.000 zadovoljnih korisnika.",
+    url: "/",
   },
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center w-full">
-      <section
-        id="hero"
-        className="w-full h-[400px] sm:h-[800px] bg-hero bg-cover bg-no-repeat bg-center relative"
-      >
-        <div className="hidden sm:flex flex-col gap-10 items-center justify-center bg-white bg-opacity-60 h-full">
-          <div className="bg-primary p-6 flex items-center gap-4 flex-col rounded-xl">
-            <h1 className="text-white text-4xl font-bold">Dobrodošli</h1>
-            <p className="text-white text-lg font-semibold">
-              Najbolje usluge pranja tepiha u gradu
-            </p>
-          </div>
-        </div>
-        <div className="absolute px-8 sm:px-12 bottom-0 transform translate-y-[50%] w-full z-10">
-          <div className="flex flex-col items-center gap-4 rounded-xl p-4 text-white bg-primary">
-            <h1 className="font-bold text-base sm:text-2xl">
-              1.000+ zadovoljnih korisnika
-            </h1>
-
-            <p className="font-semibold text-sm sm:text-lg">
-              Ponosni smo na naših preko 1 000 zadovoljnih korisnika, koji su
-              nam ukazali povjerenje i preporučili nas svojim prijateljima i
-              obitelji.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="flex flex-col-reverse lg:flex-row bg-white gap-10 pt-32 pb-20 sm:py-40 px-8 sm:px-20 relative">
-        <span id="onama" className="absolute -top-[100px]"></span>
-        <div className="flex-1  shadow-xl rounded-xl overflow-hidden">
-          <Image
-            src="/susenje.jpg"
-            width={540}
-            height={700}
-            alt="Fresh"
-            className="w-full h-full"
-            priority
-          />
-        </div>
-        <div className="flex-1 flex flex-col gap-6">
-          <h1 className="uppercase text-primary text-xl font-bold">
-            Saznajte više o nama
-          </h1>
-          <h2 className="uppercase text-3xl font-extrabold">O nama</h2>
-          <p className="">
-            Naša firma je specijalizirana za profesionalno i dubinsko pranje
-            tepiha u Zagrebu, koristeći najnovije tehnike i ekološki prihvatljive
-            proizvode. Ponosimo se brzom i efikasnom uslugom, osiguravajući da
-            vaši tepisi budu čisti, svježi i suhi u najkraćem mogućem
-            roku. Pružamo besplatnu uslugu preuzimanja i dostave tepiha, čineći
-            cijeli proces pranja bezbrižnim i jednostavnim za naše klijente.
-          </p>
-          <p className="text-base text-gray-700">
-            Bilo da se radi o kućnim tepihima, uredskim tepihima, namještaju ili
-            automobilskim presvlakama, pružamo usluge čišćenja za dom, poslovni
-            prostor i vozila u Zagrebu i okolici.
-          </p>
-          <div className="flex flex-col gap-6">
-            <div className="flex gap-3 items-center">
-              <FaPersonBooth className="text-3xl text-primary" />
-              <p className="uppercase text-base font-bold">
-                Posvećenost tepisima
-              </p>
-            </div>
-            <div className="flex gap-3 items-center">
-              <FaPeopleCarry className="text-3xl text-primary" />
-              <p className="uppercase text-base font-bold">
-                profesionalno osoblje
-              </p>
-            </div>
-            <div className="flex gap-3 items-center">
-              <FaTools className="text-3xl text-primary" />
-              <p className="uppercase text-base font-bold">
-                najmoderniji strojevi
-              </p>
-            </div>
-            <div className="flex gap-3 items-center">
-              <FaPagelines className="text-3xl text-primary" />
-              <p className="uppercase text-base font-bold">
-                ekološki proizvodi
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="relative w-full bg-kombi bg-cover bg-center">
-        <div className="relative flex flex-col sm:flex-row gap-2 py-14 px-8 items-center justify-between w-full h-full bg-primary/70">
-          <h1 className="text-white text-5xl sm:text-7xl font-bold uppercase">
-            Besplatna dostava
-          </h1>
-          <p className="text-white text-lg font-semibold">
-            Besplatna usluga preuzimanja i dostave tepiha
-          </p>
-        </div>
-      </section>
-
-      <Proces />
-      <Usluge />
-
-      <section className="w-full bg-white px-8 py-12 sm:px-20 sm:py-20">
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-8 flex flex-col gap-3">
-            <p className="text-primary text-xl font-bold uppercase">FAQ</p>
-            <h2 className="text-3xl font-extrabold uppercase text-gray-900">
-              Najčešća pitanja o pranju tepiha
-            </h2>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            <article className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
-              <h3 className="mb-2 text-lg font-bold text-primary">
-                Koliko traje čišćenje tepiha?
-              </h3>
-              <p className="text-sm leading-6 text-gray-700">
-                Ovisno o veličini i vrsti tepiha, proces obično traje od nekoliko
-                sati do najviše nekoliko dana, uključujući sušenje i završno
-                usisavanje.
-              </p>
-            </article>
-
-            <article className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
-              <h3 className="mb-2 text-lg font-bold text-primary">
-                Da li radite i uredske tepise?
-              </h3>
-              <p className="text-sm leading-6 text-gray-700">
-                Da, čistimo i kućne i uredske tepise, tapisone, presvlake i
-                druge tekstilne površine za dom i poslovni prostor.
-              </p>
-            </article>
-
-            <article className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
-              <h3 className="mb-2 text-lg font-bold text-primary">
-                Nudite li besplatnu dostavu?
-              </h3>
-              <p className="text-sm leading-6 text-gray-700">
-                Da, pružamo besplatnu uslugu preuzimanja i dostave tepiha za naše
-                klijente u Zagrebu i okolici.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-    </div>
+    <>
+      <Hero
+        title="Pranje tepiha u Zagrebu, bez nošenja i čekanja"
+        description="Tepih preuzimamo na vašoj adresi, strojno ga peremo, sušimo u komori i vraćamo čist, svjež i zapakiran. Preuzimanje i dostava su besplatni."
+        image={{
+          src: "/pakiranje.jpg",
+          alt: "Opran i zapakiran tepih spreman za dostavu u praonici Fresh",
+          width: 1600,
+          height: 1200,
+        }}
+        actions={
+          <>
+            <ButtonLink href="/kontakt" size="lg">
+              Naručite pranje
+            </ButtonLink>
+            <ButtonLink href={`tel:${site.phone}`} variant="outline" size="lg">
+              <FaPhone aria-hidden />
+              Nazovite nas
+            </ButtonLink>
+          </>
+        }
+        highlights={
+          <>
+            <li className="flex items-center gap-2">
+              <FaStar aria-hidden className="text-amber-400" />
+              {site.googleRating.value} na Googleu
+            </li>
+            <li>1.000+ zadovoljnih korisnika</li>
+            <li>Ekološka sredstva</li>
+          </>
+        }
+      />
+      <Highlights />
+      <ServicesOverview />
+      <About />
+      <Process />
+      <Pricing />
+      <BeforeAfter pairs={[beforeAfterPairs.home, beforeAfterPairs.office]} />
+      <Reviews />
+      <Faq
+        items={homeFaq}
+        title="Pitanja o pranju tepiha"
+        description="Niste pronašli odgovor? Nazovite nas ili pošaljite upit putem kontakt forme."
+      />
+      <CtaBanner />
+    </>
   );
 }

@@ -1,80 +1,121 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { FaCheck } from "react-icons/fa6";
+import { BeforeAfter, beforeAfterPairs } from "@/components/sections/BeforeAfter";
+import { CtaBanner } from "@/components/sections/CtaBanner";
+import { Faq } from "@/components/sections/Faq";
+import { Hero } from "@/components/sections/Hero";
+import { Pricing } from "@/components/sections/Pricing";
+import { Process } from "@/components/sections/Process";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { Container } from "@/components/ui/Container";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { homeCarpetFaq } from "@/data/faq";
+import { priceByCode } from "@/data/pricing";
+import { site } from "@/lib/site";
+
+const description =
+  "Strojno pranje kućnih tepiha u Zagrebu. Dubinsko čišćenje, uklanjanje mrlja, prašine i alergena, sušenje u komori te besplatno preuzimanje i dostava.";
 
 export const metadata: Metadata = {
-  title: "Kućni tepisi | Pranje i čišćenje | Fresh",
-  description:
-    "Profesionalno pranje kućnih tepiha u Zagrebu. Dubinsko čišćenje, uklanjanje mrlja, alergena i prašine uz besplatnu dostavu.",
-  alternates: {
-    canonical: "/kucni-tepisi",
-  },
+  title: "Pranje kućnih tepiha",
+  description,
+  alternates: { canonical: "/kucni-tepisi" },
   openGraph: {
-    title: "Kućni tepisi | Fresh",
-    description:
-      "Naš profesionalni tretman za kućne tepise uklanja prašinu, alergene i mrlje te vraća svježinu i čistoću.",
-    url: "https://fresh-ciscenje.hr/kucni-tepisi",
+    title: "Pranje kućnih tepiha u Zagrebu | Fresh",
+    description,
+    url: "/kucni-tepisi",
   },
 };
 
-export default function KucniTepisi() {
+const benefits = [
+  "Uklanja prašinu, alergene i mrlje iz dubine vlakana",
+  "Profesionalni strojevi i ekološki prihvatljiva sredstva",
+  "Sušenje u komori s kontroliranom temperaturom i vlagom",
+  "Besplatno preuzimanje i dostava na vašu adresu",
+];
+
+const carpetPrice = priceByCode("TEP-01");
+
+export default function KucniTepisiPage() {
   return (
-    <div className="flex flex-col flex-1 items-center w-full">
-      <section
-        id="hero"
-        className="w-full h-[400px] sm:h-[800px] bg-centrifuga bg-cover bg-no-repeat bg-center relative"
-      >
-        <div className="hidden sm:flex flex-col gap-10 items-center justify-center bg-white bg-opacity-60 h-full">
-          <div className="bg-primary p-6 flex items-center gap-4 flex-col rounded-xl">
-            <h1 className="text-white text-4xl font-bold">Kućni Tepisi</h1>
-            <p className="text-white text-lg font-semibold">
-              Profesionalno čišćenje vaših kućnih tepiha
-            </p>
-          </div>
-        </div>
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Pranje kućnih tepiha",
+          serviceType: "Strojno pranje tepiha",
+          description,
+          areaServed: { "@type": "City", name: "Zagreb" },
+          provider: { "@id": `${site.url}/#business` },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "EUR",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: carpetPrice.price,
+              priceCurrency: "EUR",
+              unitText: carpetPrice.unit,
+            },
+          },
+        }}
+      />
+      <Breadcrumbs items={[{ href: "/kucni-tepisi", label: "Kućni tepisi" }]} />
+      <Hero
+        title="Strojno pranje kućnih tepiha"
+        description="Vratite tepihu svježinu i boju. Strojnim pranjem uklanjamo nečistoće, prašinu, alergene i mrlje koje se ne mogu ukloniti standardnim, površinskim čišćenjem."
+        image={{
+          src: "/centrifuga.jpg",
+          alt: "Centrifuga za tepihe u praonici Fresh",
+          width: 2048,
+          height: 1536,
+        }}
+        actions={
+          <>
+            <ButtonLink href="/kontakt" size="lg">
+              Naručite pranje
+            </ButtonLink>
+            <ButtonLink href="#cijene" variant="outline" size="lg">
+              Pogledajte cijene
+            </ButtonLink>
+          </>
+        }
+      />
+
+      <section className="py-16 sm:py-24">
+        <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <SectionHeading
+            eyebrow="Čistoća i svježina"
+            title="Zašto strojno pranje tepiha?"
+            description="Strojno pranje je metoda temeljitog čišćenja pomoću profesionalnih strojeva i ekološki prihvatljivih sredstava. Tepih nakon pranja ponovno dobiva svježinu i čistoću, a vaš dom postaje zdraviji prostor."
+          />
+          <ul className="grid gap-4">
+            {benefits.map((benefit) => (
+              <li
+                key={benefit}
+                className="flex items-start gap-4 rounded-3xl border border-slate-200 bg-white p-5 font-semibold text-ink"
+              >
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary text-sm text-white">
+                  <FaCheck aria-hidden />
+                </span>
+                {benefit}
+              </li>
+            ))}
+          </ul>
+        </Container>
       </section>
-      <section className="flex flex-col lg:flex-row bg-white gap-10 pt-12 sm:pt-24 md:pt-32 pb-20 sm:py-40 px-8 sm:px-20 relative">
-        <div className="flex-1 flex flex-col gap-6">
-          <h1 className="uppercase text-primary text-xl font-bold">
-            Kućni Tepisi
-          </h1>
-          <h2 className="uppercase text-3xl font-extrabold">
-            Čistoća i svježina
-          </h2>
-          <p>
-            Strojno pranje tepiha u Zagrebu je metoda temeljitog čišćenja tepiha pomoću profesionalnih strojeva i ekološki prihvatljivih sredstava.
-          </p>
-          <p>
-            Ovim postupkom uklanjaju se sve nečistoće, prašina, alergeni i mrlje koje se ne mogu ukloniti standardnim i površinskim čišćenjem, a tepih ponovno dobiva svježinu i čistoću u domaćinstvu.
-          </p>
-        </div>
-        <div className="flex-1 flex flex-col gap-6">
-          <h3 className="text-primary text-xl font-bold">Prije i Poslije</h3>
-          <div className="flex gap-4">
-            <div className="flex-1 shadow-xl rounded-xl overflow-hidden">
-              <Image
-                src="/kucni-prije.jpg"
-                width={540}
-                height={700}
-                alt="Kućni Tepisi Prije"
-                className="w-full h-full"
-                priority
-              />
-              <p className="text-center text-sm mt-2">Prije čišćenja</p>
-            </div>
-            <div className="flex-1 shadow-xl rounded-xl overflow-hidden">
-              <Image
-                src="/kucni-poslije.jpg"
-                width={540}
-                height={700}
-                alt="Kućni Tepisi Poslije"
-                className="w-full h-full"
-                priority
-              />
-              <p className="text-center text-sm mt-2">Poslije čišćenja</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+
+      <BeforeAfter pairs={[beforeAfterPairs.home]} title="Kućni tepih prije i poslije pranja" />
+      <Process />
+      <Pricing
+        id="cijene"
+        title="Cijene pranja i čišćenja"
+        codes={["TEP-01", "NAM-01", "NAM-02", "NAM-03", "NAM-04", "NAM-05", "NAM-06", "NAM-07", "NAM-08"]}
+      />
+      <Faq items={homeCarpetFaq} title="Pitanja o pranju kućnih tepiha" />
+      <CtaBanner />
+    </>
   );
 }

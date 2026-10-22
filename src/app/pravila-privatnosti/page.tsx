@@ -1,94 +1,128 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { LegalPage } from "@/components/legal/LegalPage";
+import { fullAddress, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Pravila privatnosti | Fresh",
+  title: "Pravila privatnosti",
   description:
-    "Pravila privatnosti tvrtke Fresh. Informacije o prikupljanju, obradi i zaštiti osobnih podataka korisnika.",
-  alternates: {
-    canonical: "/pravila-privatnosti",
-  },
+    "Pravila privatnosti obrta Fresh: koje osobne podatke prikupljamo, u koje svrhe, koliko ih čuvamo, kolačići i vaša prava.",
+  alternates: { canonical: "/pravila-privatnosti" },
 };
 
 export default function PravilaPrivatnostiPage() {
   return (
-    <main className="flex w-full flex-col items-center px-4 py-16 sm:px-8 lg:px-20">
-      <article className="w-full max-w-5xl rounded-2xl bg-white p-6 shadow-xl sm:p-10">
-        <p className="text-xl font-bold uppercase text-primary">Pravila privatnosti</p>
-        <h1 className="mt-2 text-3xl font-extrabold uppercase text-gray-900">
-          Zaštita osobnih podataka
-        </h1>
-
-        <div className="mt-8 space-y-7 text-gray-700">
-          <p>
-            Tvrtka Fresh poštuje privatnost svojih korisnika i poduzima odgovarajuće mjere
-            za zaštitu osobnih podataka prikupljenih putem web stranice, telefona, e-maila,
-            WhatsAppa ili drugih komunikacijskih kanala.
-          </p>
-
-          <section>
-            <h2 className="mb-2 text-xl font-bold text-gray-900">1. Koje podatke prikupljamo</h2>
+    <LegalPage
+      href="/pravila-privatnosti"
+      breadcrumb="Pravila privatnosti"
+      eyebrow="Pravne informacije"
+      title="Pravila privatnosti"
+      intro={
+        <p>
+          Fresh poštuje privatnost svojih korisnika i poduzima odgovarajuće mjere za zaštitu
+          osobnih podataka prikupljenih putem web stranice, telefona, e-maila, WhatsAppa ili
+          drugih komunikacijskih kanala.
+        </p>
+      }
+      sections={[
+        {
+          title: "Voditelj obrade",
+          content: (
             <p>
-              Prikupljamo podatke koje nam dostavite u svrhu narudžbe ili komunikacije,
-              uključujući ime, prezime, kontakt broj, adresu, e-mail adresu, informacije o
-              usluzi i sve dodatne podatke potrebne za pravilno pružanje usluge.
+              Voditelj obrade osobnih podataka je {site.legalName}, {fullAddress}, MB{" "}
+              {site.registrationNumber}, e-mail <a href={`mailto:${site.email}`}>{site.email}</a>.
             </p>
-          </section>
-
-          <section>
-            <h2 className="mb-2 text-xl font-bold text-gray-900">2. Svrha obrade</h2>
+          ),
+        },
+        {
+          title: "Koje podatke prikupljamo",
+          content: (
             <p>
-              Osobni podaci obrađuju se isključivo u svrhu komunikacije, potvrdbe narudžbe,
-              pružanja usluge, obračuna, dostave, evidentiranja poslovanja, zaštite prava i
-              rješavanja reklamacija ili dodatnih upita klijenata.
+              Prikupljamo podatke koje nam dostavite radi narudžbe ili komunikacije, uključujući
+              ime i prezime, broj telefona, adresu, e-mail adresu, informacije o usluzi i druge
+              podatke potrebne za pravilno pružanje usluge.
             </p>
-          </section>
-
-          <section>
-            <h2 className="mb-2 text-xl font-bold text-gray-900">3. Prijenos podataka</h2>
+          ),
+        },
+        {
+          title: "Svrha obrade",
+          content: (
             <p>
-              Podaci se ne prodaju niti dijele s trećim stranama bez vašeg pristanka, osim ako
-              je to nužno za pružanje usluge, ispunjenje pravnih obveza ili zaštitu legitimnih
-              interesa tvrtke. U takvim slučajevima osiguravamo odgovarajuće mjere zaštite.
+              Osobni podaci obrađuju se isključivo radi komunikacije, potvrde narudžbe,
+              pružanja usluge, obračuna, preuzimanja i dostave, evidentiranja poslovanja, zaštite
+              prava te rješavanja reklamacija i upita.
             </p>
-          </section>
-
-          <section>
-            <h2 className="mb-2 text-xl font-bold text-gray-900">4. Trajanje pohrane</h2>
+          ),
+        },
+        {
+          title: "Prijenos podataka",
+          content: (
+            <>
+              <p>
+                Podaci se ne prodaju niti dijele s trećim stranama bez vašeg pristanka, osim ako
+                je to nužno za pružanje usluge, ispunjenje zakonskih obveza ili zaštitu
+                legitimnih interesa. U takvim slučajevima osiguravamo odgovarajuće mjere zaštite.
+              </p>
+              <p>
+                Poruke poslane putem kontakt forme dostavljaju se na naš e-mail posredstvom
+                pružatelja usluge slanja e-pošte (Resend).
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Kolačići",
+          content: (
             <p>
-              Osobni podaci pohranjuju se onoliko dugo koliko je potrebno za svrhu radi koje
-              su prikupljeni, te u skladu s važećim propisima i poslovnim potrebama. Nakon
-              isteka razdoblja, podaci se brišu ili anonimiziraju.
+              Stranica koristi nužne tehničke postavke za svoj rad. Google oznaku za mjerenje
+              oglasa (Google Ads) učitavamo isključivo ako to odobrite u obavijesti o
+              kolačićima. Vaš odabir spremamo u pregledniku, a možete ga promijeniti ili povući u
+              bilo kojem trenutku putem poveznice &quot;Postavke kolačića&quot; u podnožju stranice.
             </p>
-          </section>
-
-          <section>
-            <h2 className="mb-2 text-xl font-bold text-gray-900">5. Prava korisnika</h2>
+          ),
+        },
+        {
+          title: "Trajanje pohrane",
+          content: (
             <p>
-              Korisnik ima pravo zatražiti pristup svojim osobnim podacima, ispravak, brisanje,
-              ograničenje obrade, prenosivost podataka i podizanje prigovora na obradu. Za
-              ostvarivanje prava možete nas kontaktirati putem e-maila ili telefona navedenog
-              na web stranici.
+              Osobni podaci čuvaju se onoliko dugo koliko je potrebno za svrhu radi koje su
+              prikupljeni te u skladu s važećim propisima. Nakon isteka tog razdoblja podaci se
+              brišu ili anonimiziraju.
             </p>
-          </section>
-
-          <section>
-            <h2 className="mb-2 text-xl font-bold text-gray-900">6. Sigurnost</h2>
+          ),
+        },
+        {
+          title: "Prava korisnika",
+          content: (
             <p>
-              Fresh primjenjuje odgovarajuće tehničke i organizacijske mjere kako bi zaštitio
-              osobne podatke od neovlaštenog pristupa, gubitka, izmjene ili objavljivanja.
+              Imate pravo zatražiti pristup svojim osobnim podacima, ispravak, brisanje,
+              ograničenje obrade i prenosivost podataka te uložiti prigovor na obradu. Ako
+              smatrate da se vaši podaci obrađuju nezakonito, možete podnijeti pritužbu
+              Agenciji za zaštitu osobnih podataka (AZOP).
             </p>
-          </section>
-
-          <section>
-            <h2 className="mb-2 text-xl font-bold text-gray-900">7. Kontakt</h2>
+          ),
+        },
+        {
+          title: "Sigurnost",
+          content: (
             <p>
-              Ako imate pitanja o obradi osobnih podataka ili želite ostvariti svoja prava,
-              kontaktirajte nas putem e-maila ili telefona koji su dostupni na stranici
-              Kontakt.
+              Primjenjujemo odgovarajuće tehničke i organizacijske mjere kako bismo zaštitili
+              osobne podatke od neovlaštenog pristupa, gubitka, izmjene ili objave.
             </p>
-          </section>
-        </div>
-      </article>
-    </main>
+          ),
+        },
+        {
+          title: "Kontakt",
+          content: (
+            <p>
+              Za pitanja o obradi osobnih podataka ili ostvarivanje prava javite nam se na{" "}
+              <a href={`mailto:${site.email}`}>{site.email}</a>, telefonom na{" "}
+              <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a> ili putem stranice{" "}
+              <Link href="/kontakt">Kontakt</Link>.
+            </p>
+          ),
+        },
+      ]}
+    />
   );
 }

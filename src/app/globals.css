@@ -1,20 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html {
-  scroll-behavior: smooth !important;
- }
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 
- .instagram{
-  background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%)
+  --color-primary: #2c549d;
+  --color-primary-50: #eff4fb;
+  --color-primary-100: #dce6f5;
+  --color-primary-200: #b9cdeb;
+  --color-primary-700: #234583;
+  --color-primary-800: #1c3767;
+  --color-primary-900: #142849;
+
+  --color-secondary: #459cb2;
+  --color-secondary-50: #edf7fa;
+  --color-secondary-100: #d4edf3;
+  --color-secondary-700: #2f7487;
+
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+
+  --breakpoint-xs: 23.4375rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
- @layer utilities {
-  .clip-right {
-    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
-  .clip-left {
-    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+
+  body {
+    @apply bg-white text-ink antialiased;
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  ::selection {
+    @apply bg-secondary-100 text-primary-900;
   }
 }
