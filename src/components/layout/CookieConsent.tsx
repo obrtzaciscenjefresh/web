@@ -4,42 +4,10 @@ import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
 import { consentEvent, consentKey } from "@/lib/consent";
 
-const analyticsId = "AW-17350004003";
-
 const consentTypes = ["ad_storage", "ad_user_data", "ad_personalization", "analytics_storage"] as const;
 
 function consentState(value: "granted" | "denied") {
   return Object.fromEntries(consentTypes.map((type) => [type, value]));
-}
-
-function ensureGtag() {
-  window.dataLayer = window.dataLayer || [];
-  window.gtag =
-    window.gtag ||
-    function gtag() {
-      // gtag.js only processes the native `arguments` object, not an array.
-      // eslint-disable-next-line prefer-rest-params
-      window.dataLayer.push(arguments);
-    };
-  return window.gtag;
-}
-
-// Consent Mode: oznaka se učitava uvijek (Google je mora vidjeti), ali bez pristanka ne postavlja kolačiće.
-function loadAnalytics() {
-  if (document.querySelector(`script[data-fresh-analytics="${analyticsId}"]`)) {
-    return;
-  }
-
-  const gtag = ensureGtag();
-  gtag("consent", "default", consentState("denied"));
-  gtag("js", new Date());
-  gtag("config", analyticsId);
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`;
-  script.dataset.freshAnalytics = analyticsId;
-  document.head.appendChild(script);
 }
 
 function updateConsent(value: "granted" | "denied") {
@@ -62,7 +30,6 @@ export function CookieConsent() {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    loadAnalytics();
     if (consent === "accepted") {
       updateConsent("granted");
     } else if (consent === "declined") {

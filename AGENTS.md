@@ -20,7 +20,7 @@
 
 ## Analytics And SEO
 
-- The Google tag loads via `loadAnalytics()` in `CookieConsent.tsx` with Consent Mode defaults set to `denied`; consent (localStorage key `fresh-cookie-consent`) only switches them to `granted`. Never add tracking scripts to the layout.
+- The Google tag is rendered in server HTML by `GoogleTag.tsx` (root layout, `beforeInteractive`) with Consent Mode defaults set to `denied`; `CookieConsent.tsx` (localStorage key `fresh-cookie-consent`) only switches them to `granted`/`denied`. Never add other tracking scripts.
 - Every page exports `metadata` with `alternates.canonical`; root layout sets the title template. One `h1` per page.
 - JSON-LD: business + website in `src/app/layout.tsx`, `Breadcrumbs`, `Faq` and service pages emit their own via `JsonLd`. Add new pages to `src/app/sitemap.ts`.
 

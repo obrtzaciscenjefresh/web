@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { CookieConsent } from "@/components/layout/CookieConsent";
 import { Footer } from "@/components/layout/Footer";
+import { GoogleTag } from "@/components/layout/GoogleTag";
 import { Header } from "@/components/layout/Header";
 import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -133,6 +134,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <MobileCtaBar />
+        <GoogleTag />
         <CookieConsent />
       </body>
     </html>

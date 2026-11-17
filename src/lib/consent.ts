@@ -1,5 +1,6 @@
 export const consentKey = "fresh-cookie-consent";
 export const consentEvent = "fresh-cookie-consent-change";
+export const analyticsId = "AW-18200670837";
 
 export function openCookieSettings() {
   window.localStorage.removeItem(consentKey);
