@@ -24,15 +24,14 @@ function ensureGtag() {
   return window.gtag;
 }
 
-function enableAnalytics() {
+// Consent Mode: oznaka se učitava uvijek (Google je mora vidjeti), ali bez pristanka ne postavlja kolačiće.
+function loadAnalytics() {
   if (document.querySelector(`script[data-fresh-analytics="${analyticsId}"]`)) {
-    window.gtag?.("consent", "update", consentState("granted"));
     return;
   }
 
   const gtag = ensureGtag();
   gtag("consent", "default", consentState("denied"));
-  gtag("consent", "update", consentState("granted"));
   gtag("js", new Date());
   gtag("config", analyticsId);
 
@@ -43,8 +42,8 @@ function enableAnalytics() {
   document.head.appendChild(script);
 }
 
-function disableAnalytics() {
-  window.gtag?.("consent", "update", consentState("denied"));
+function updateConsent(value: "granted" | "denied") {
+  window.gtag?.("consent", "update", consentState(value));
 }
 
 function subscribe(onChange: () => void) {
@@ -63,10 +62,11 @@ export function CookieConsent() {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
+    loadAnalytics();
     if (consent === "accepted") {
-      enableAnalytics();
+      updateConsent("granted");
     } else if (consent === "declined") {
-      disableAnalytics();
+      updateConsent("denied");
     }
   }, [consent]);
 

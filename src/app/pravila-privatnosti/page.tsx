@@ -74,8 +74,9 @@ export default function PravilaPrivatnostiPage() {
           title: "Kolačići",
           content: (
             <p>
-              Stranica koristi nužne tehničke postavke za svoj rad. Google oznaku za mjerenje
-              oglasa (Google Ads) učitavamo isključivo ako to odobrite u obavijesti o
+              Stranica koristi nužne tehničke postavke za svoj rad. Google oznaka (Google Ads)
+              učitava se uz isključene kolačiće i bez povezivanja s vašim uređajem; kolačiće za
+              mjerenje oglasa uključujemo isključivo ako to odobrite u obavijesti o
               kolačićima. Vaš odabir spremamo u pregledniku, a možete ga promijeniti ili povući u
               bilo kojem trenutku putem poveznice &quot;Postavke kolačića&quot; u podnožju stranice.
             </p>
